@@ -1,4 +1,4 @@
-HORARIO ESCOLAR · DEMOSTRACIÓN COMERCIAL NORTH GREEN ACADEMY V1.0.3 (PRUEBA)
+HORARIO ESCOLAR · DEMOSTRACIÓN COMERCIAL NORTH GREEN ACADEMY V1.0.4 (PRUEBA)
 
 Aplicación demostrativa con interfaz y funciones equivalentes a la PWA de Chesterton,
 pero con banner e iconos de North Green Academy, institución ficticia.
@@ -6,10 +6,10 @@ Las materias y horarios se presentan ÚNICAMENTE como ejemplo, no como datos de 
 El selector permite explorar 1º a 6º, A/B, pero muestra los mismos horarios ilustrativos.
 
 INSTALAR EN GITHUB PAGES
-1. Crear un REPOSITORIO NUEVO para esta demo, separado de Chesterton.
-2. Descomprimir el ZIP y subir los 13 archivos de esta carpeta a la RAÍZ del nuevo repositorio.
-3. En GitHub: Settings > Pages > Deploy from a branch > main / (root) > Save.
-4. Abrir la URL HTTPS publicada para probar la instalación como PWA, enlace y QR.
+1. Entrar al repositorio existente Horario-Escolar-Demo-North-Green.
+2. Descomprimir el ZIP y subir los 13 archivos a la RAÍZ, reemplazando los anteriores.
+3. Confirmar los cambios y comprobar que GitHub Pages complete la actualización.
+4. Abrir la URL HTTPS publicada para probar la nueva versión. No crear otro repositorio.
 
 IMPORTANTE
 - No subir la demo en el repositorio de Chesterton: el contenido reemplazaría su aplicación.
@@ -21,4 +21,6 @@ IMPORTANTE
 
 Autoría del software: Marcelo R. · Proyecto comercial Horario Escolar.
 
-V1.0.3: banner sin márgenes laterales, con relación de aspecto original 3:1; desplazamiento de martes y miércoles; versión interna sincronizada.
+V1.0.3 (estable anterior): banner de ancho completo y centrado de los días desplegados.
+
+V1.0.4 (prueba): mejora de contraste en modo claro y encuadre de iconos de Android/iPhone en Ayuda.
