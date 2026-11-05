@@ -453,7 +453,7 @@ body { background:var(--bg) !important; }
 @media(max-height:620px){.school-brand .school-brand-logo{height:auto!important;}}
 
 
-/* V1.0.6 — Mejor contraste en tema claro, sin alterar los demás temas. */
+/* V1.0.7 — Mejor contraste en tema claro, sin alterar los demás temas. */
 body.theme-light .install-platform,
 body.theme-light .install-guide,
 body.theme-light .help-section{
@@ -492,12 +492,12 @@ body.theme-light .close{border-color:#acbed2;background:#e9f0f9;color:#14243b;}
 }
 
 
-/* V1.0.6: el ordinal completo debe entrar también en pantallas anchas. */
+/* V1.0.7: el ordinal completo debe entrar también en pantallas anchas. */
 @media (min-width:481px){
   .actions>.course-btn{min-width:92px!important;padding:0 9px!important;}
 }
 
-/* V1.0.6 — Inicio estable tras actualizar / regresar a la PWA.
+/* V1.0.7 — Inicio estable tras actualizar / regresar a la PWA.
    Solo la vista expandida puede desplazarse verticalmente. */
 :root{--home-viewport-height:100dvh}
 html:not(.ng-day-expanded){
@@ -525,6 +525,17 @@ body:not(.is-expanded){
 }
 .week:not(.expanded)>.day{min-height:0}
 html.ng-day-expanded{height:auto;overflow-y:auto}
+
+/* V1.0.7: tarjetas informativas de la demostración, exclusivamente dentro de Ayuda. */
+.commercial-info{border-color:color-mix(in srgb,var(--accent),var(--border) 65%)}
+.commercial-info .commercial-points{padding-left:19px;margin:9px 0}
+.commercial-info .commercial-points li{font-size:12px;line-height:1.55;margin:0 0 7px;color:var(--text)}
+.commercial-contact{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border-radius:11px;background:var(--shade);border:1px solid var(--accent);color:var(--accent);font-size:12px;font-weight:850;text-decoration:none;margin-top:10px}
+.commercial-contact:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.creator-info{margin-bottom:18px}
+body.theme-light .commercial-info .commercial-points li{color:#20334f}
+body.theme-light .commercial-contact{background:#e5f1ff;color:#07538b;border-color:#477da8}
+
 </style>
 </head>
 <body class="theme-blue">
@@ -543,11 +554,13 @@ html.ng-day-expanded{height:auto;overflow-y:auto}
   <div class="cycle-strip"><span id="titleSub">3.º año A · Ciclo lectivo 2026</span><span class="fixed-label">MODO DEMO</span></div>
  <div class="hint"><span>Tocá un día y deslizá para ver todas las materias</span></div>
 
- <section id="week" class="week" aria-label="Horario de lunes a viernes"><details class="day" id="day-0" style="--day-accent:#69aeff"><summary class="day-button" aria-label="Ver las materias del Lunes"><div><div class="day-title">Lunes</div><div class="day-desc">12:50 a 18:20</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Educación Física · Ciudadanía · Inglés · Historia</span></div></div><div class="day-meta"><span class="day-pill">5 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#649eea"><div class="hours">12:50<br>13:50</div><div class="bar"></div><div class="info"><strong>Educación Física</strong><small>1.ª hora</small></div></div><div class="lesson" style="--materia:#ef5454"><div class="hours">13:50<br>14:50</div><div class="bar"></div><div class="info"><strong>Construcción de la Ciudadanía</strong><small>2.ª hora</small></div></div><div class="recreo">Recreo · 14:50 a 15:05</div><div class="lesson" style="--materia:#f7e058"><div class="hours">15:05<br>16:05</div><div class="bar"></div><div class="info"><strong>Inglés</strong><small>3.ª hora</small></div></div><div class="recreo">Recreo · 16:05 a 16:20</div><div class="lesson" style="--materia:#33d65a"><div class="hours">16:20<br>17:20</div><div class="bar"></div><div class="info"><strong>Historia</strong><small>4.ª hora</small></div></div><div class="lesson" style="--materia:#33d65a"><div class="hours">17:20<br>18:20</div><div class="bar"></div><div class="info"><strong>Historia</strong><small>5.ª hora</small></div></div></div></details>
-<details class="day" id="day-1" style="--day-accent:#ffb15e"><summary class="day-button" aria-label="Ver las materias del Martes"><div><div class="day-title">Martes</div><div class="day-desc">11:30 a 18:20</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Matemática · Físico Química · Biología · Inglés</span></div></div><div class="day-meta"><span class="day-pill">6 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#efa642"><div class="hours">11:30<br>12:30</div><div class="bar"></div><div class="info"><strong>Matemática</strong><small>Prehora</small></div></div><div class="lesson" style="--materia:#44b8ae"><div class="hours">12:50<br>13:50</div><div class="bar"></div><div class="info"><strong>Físico Química</strong><small>1.ª hora</small></div></div><div class="lesson" style="--materia:#22d4d9"><div class="hours">13:50<br>14:50</div><div class="bar"></div><div class="info"><strong>Biología</strong><small>2.ª hora</small></div></div><div class="recreo">Recreo · 14:50 a 15:05</div><div class="lesson" style="--materia:#efa642"><div class="hours">15:05<br>16:05</div><div class="bar"></div><div class="info"><strong>Matemática</strong><small>3.ª hora</small></div></div><div class="recreo">Recreo · 16:05 a 16:20</div><div class="lesson" style="--materia:#f7e058"><div class="hours">16:20<br>17:20</div><div class="bar"></div><div class="info"><strong>Inglés</strong><small>4.ª hora</small></div></div><div class="lesson" style="--materia:#f7e058"><div class="hours">17:20<br>18:20</div><div class="bar"></div><div class="info"><strong>Inglés</strong><small>5.ª hora</small></div></div></div></details>
-<details class="day" id="day-2" style="--day-accent:#69d8be"><summary class="day-button" aria-label="Ver las materias del Miércoles"><div><div class="day-title">Miércoles</div><div class="day-desc">12:50 a 18:20</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Geografía · Matemática · Ed. Física · Lenguaje</span></div></div><div class="day-meta"><span class="day-pill">5 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#9ccdab"><div class="hours">12:50<br>13:50</div><div class="bar"></div><div class="info"><strong>Geografía</strong><small>1.ª hora</small></div></div><div class="lesson" style="--materia:#efa642"><div class="hours">13:50<br>14:50</div><div class="bar"></div><div class="info"><strong>Matemática</strong><small>2.ª hora</small></div></div><div class="recreo">Recreo · 14:50 a 15:05</div><div class="lesson" style="--materia:#649eea"><div class="hours">15:05<br>16:05</div><div class="bar"></div><div class="info"><strong>Educación Física</strong><small>3.ª hora</small></div></div><div class="recreo">Recreo · 16:05 a 16:20</div><div class="lesson" style="--materia:#44b8ae"><div class="hours">16:20<br>17:20</div><div class="bar"></div><div class="info"><strong>Físico Química</strong><small>4.ª hora</small></div></div><div class="lesson" style="--materia:#d76be8"><div class="hours">17:20<br>18:20</div><div class="bar"></div><div class="info"><strong>Prácticas del Lenguaje</strong><small>5.ª hora</small></div></div></div></details>
-<details class="day" id="day-3" style="--day-accent:#c9a2ff"><summary class="day-button" aria-label="Ver las materias del Jueves"><div><div class="day-title">Jueves</div><div class="day-desc">12:50 a 18:20</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Educación Artística · Geografía · Lenguaje · Robótica</span></div></div><div class="day-meta"><span class="day-pill">5 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#e18d7e"><div class="hours">12:50<br>13:50</div><div class="bar"></div><div class="info"><strong>Educación Artística</strong><small>1.ª hora</small></div></div><div class="lesson" style="--materia:#e18d7e"><div class="hours">13:50<br>14:50</div><div class="bar"></div><div class="info"><strong>Educación Artística</strong><small>2.ª hora</small></div></div><div class="recreo">Recreo · 14:50 a 15:05</div><div class="lesson" style="--materia:#9ccdab"><div class="hours">15:05<br>16:05</div><div class="bar"></div><div class="info"><strong>Geografía</strong><small>3.ª hora</small></div></div><div class="recreo">Recreo · 16:05 a 16:20</div><div class="lesson" style="--materia:#d76be8"><div class="hours">16:20<br>17:20</div><div class="bar"></div><div class="info"><strong>Prácticas del Lenguaje</strong><small>4.ª hora</small></div></div><div class="lesson" style="--materia:#41d5cc"><div class="hours">17:20<br>18:20</div><div class="bar"></div><div class="info"><strong>Robótica</strong><small>5.ª hora</small></div></div></div></details>
-<details class="day" id="day-4" style="--day-accent:#f68bb7"><summary class="day-button" aria-label="Ver las materias del Viernes"><div><div class="day-title">Viernes</div><div class="day-desc">12:50 a 18:20</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Prácticas del Lenguaje · Biología · Ciudadanía · Matemática</span></div></div><div class="day-meta"><span class="day-pill">5 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#d76be8"><div class="hours">12:50<br>13:50</div><div class="bar"></div><div class="info"><strong>Prácticas del Lenguaje</strong><small>1.ª hora</small></div></div><div class="lesson" style="--materia:#d76be8"><div class="hours">13:50<br>14:50</div><div class="bar"></div><div class="info"><strong>Prácticas del Lenguaje</strong><small>2.ª hora</small></div></div><div class="recreo">Recreo · 14:50 a 15:05</div><div class="lesson" style="--materia:#22d4d9"><div class="hours">15:05<br>16:05</div><div class="bar"></div><div class="info"><strong>Biología</strong><small>3.ª hora</small></div></div><div class="recreo">Recreo · 16:05 a 16:20</div><div class="lesson" style="--materia:#ef5454"><div class="hours">16:20<br>17:20</div><div class="bar"></div><div class="info"><strong>Construcción de la Ciudadanía</strong><small>4.ª hora</small></div></div><div class="lesson" style="--materia:#efa642"><div class="hours">17:20<br>18:20</div><div class="bar"></div><div class="info"><strong>Matemática</strong><small>5.ª hora</small></div></div></div></details></section>
+ <section id="week" class="week" aria-label="Horario de lunes a viernes">
+<details class="day" id="day-0" style="--day-accent:#69aeff"><summary class="day-button" aria-label="Ver las materias del Lunes"><div><div class="day-title">Lunes</div><div class="day-desc">07:30 a 12:30</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Prácticas del Lenguaje · Tecnología · Matemática · Físico Química</span></div></div><div class="day-meta"><span class="day-pill">6 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#44b8ae"><div class="hours">07:30<br>08:15</div><div class="bar"></div><div class="info"><strong>Prácticas del Lenguaje</strong><small>1.ª clase</small></div></div><div class="lesson" style="--materia:#9ccdab"><div class="hours">08:15<br>09:00</div><div class="bar"></div><div class="info"><strong>Tecnología</strong><small>2.ª clase</small></div></div><div class="recreo">Recreo · 09:00 a 09:15</div><div class="lesson" style="--materia:#649eea"><div class="hours">09:15<br>10:00</div><div class="bar"></div><div class="info"><strong>Matemática</strong><small>3.ª clase</small></div></div><div class="lesson" style="--materia:#22d4d9"><div class="hours">10:00<br>10:45</div><div class="bar"></div><div class="info"><strong>Físico Química</strong><small>4.ª clase</small></div></div><div class="recreo">Recreo · 10:45 a 11:00</div><div class="lesson" style="--materia:#d76be8"><div class="hours">11:00<br>11:45</div><div class="bar"></div><div class="info"><strong>Geografía</strong><small>5.ª clase</small></div></div><div class="lesson" style="--materia:#44b8ae"><div class="hours">11:45<br>12:30</div><div class="bar"></div><div class="info"><strong>Prácticas del Lenguaje</strong><small>6.ª clase</small></div></div></div></details>
+<details class="day" id="day-1" style="--day-accent:#ffb15e"><summary class="day-button" aria-label="Ver las materias del Martes"><div><div class="day-title">Martes</div><div class="day-desc">07:30 a 11:45</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Ciudadanía · Biología · Historia · Inglés</span></div></div><div class="day-meta"><span class="day-pill">5 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#e18d7e"><div class="hours">07:30<br>08:15</div><div class="bar"></div><div class="info"><strong>Ciudadanía</strong><small>1.ª clase</small></div></div><div class="lesson" style="--materia:#efa642"><div class="hours">08:15<br>09:00</div><div class="bar"></div><div class="info"><strong>Biología</strong><small>2.ª clase</small></div></div><div class="recreo">Recreo · 09:00 a 09:15</div><div class="lesson" style="--materia:#33d65a"><div class="hours">09:15<br>10:00</div><div class="bar"></div><div class="info"><strong>Historia</strong><small>3.ª clase</small></div></div><div class="lesson" style="--materia:#f7e058"><div class="hours">10:00<br>10:45</div><div class="bar"></div><div class="info"><strong>Inglés</strong><small>4.ª clase</small></div></div><div class="recreo">Recreo · 10:45 a 11:00</div><div class="lesson" style="--materia:#ef5454"><div class="hours">11:00<br>11:45</div><div class="bar"></div><div class="info"><strong>Educación Física</strong><small>5.ª clase</small></div></div></div></details>
+<details class="day" id="day-2" style="--day-accent:#69d8be"><summary class="day-button" aria-label="Ver las materias del Miércoles"><div><div class="day-title">Miércoles</div><div class="day-desc">07:30 a 11:45</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Físico Química · Geografía · Prácticas del Lenguaje · Tecnología</span></div></div><div class="day-meta"><span class="day-pill">5 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#22d4d9"><div class="hours">07:30<br>08:15</div><div class="bar"></div><div class="info"><strong>Físico Química</strong><small>1.ª clase</small></div></div><div class="lesson" style="--materia:#d76be8"><div class="hours">08:15<br>09:00</div><div class="bar"></div><div class="info"><strong>Geografía</strong><small>2.ª clase</small></div></div><div class="recreo">Recreo · 09:00 a 09:15</div><div class="lesson" style="--materia:#44b8ae"><div class="hours">09:15<br>10:00</div><div class="bar"></div><div class="info"><strong>Prácticas del Lenguaje</strong><small>3.ª clase</small></div></div><div class="lesson" style="--materia:#9ccdab"><div class="hours">10:00<br>10:45</div><div class="bar"></div><div class="info"><strong>Tecnología</strong><small>4.ª clase</small></div></div><div class="recreo">Recreo · 10:45 a 11:00</div><div class="lesson" style="--materia:#649eea"><div class="hours">11:00<br>11:45</div><div class="bar"></div><div class="info"><strong>Matemática</strong><small>5.ª clase</small></div></div></div></details>
+<details class="day" id="day-3" style="--day-accent:#c9a2ff"><summary class="day-button" aria-label="Ver las materias del Jueves"><div><div class="day-title">Jueves</div><div class="day-desc">07:30 a 12:30</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Inglés · Educación Física · Ciudadanía · Biología</span></div></div><div class="day-meta"><span class="day-pill">6 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#f7e058"><div class="hours">07:30<br>08:15</div><div class="bar"></div><div class="info"><strong>Inglés</strong><small>1.ª clase</small></div></div><div class="lesson" style="--materia:#ef5454"><div class="hours">08:15<br>09:00</div><div class="bar"></div><div class="info"><strong>Educación Física</strong><small>2.ª clase</small></div></div><div class="recreo">Recreo · 09:00 a 09:15</div><div class="lesson" style="--materia:#e18d7e"><div class="hours">09:15<br>10:00</div><div class="bar"></div><div class="info"><strong>Ciudadanía</strong><small>3.ª clase</small></div></div><div class="lesson" style="--materia:#efa642"><div class="hours">10:00<br>10:45</div><div class="bar"></div><div class="info"><strong>Biología</strong><small>4.ª clase</small></div></div><div class="recreo">Recreo · 10:45 a 11:00</div><div class="lesson" style="--materia:#33d65a"><div class="hours">11:00<br>11:45</div><div class="bar"></div><div class="info"><strong>Historia</strong><small>5.ª clase</small></div></div><div class="lesson" style="--materia:#f7e058"><div class="hours">11:45<br>12:30</div><div class="bar"></div><div class="info"><strong>Inglés</strong><small>6.ª clase</small></div></div></div></details>
+<details class="day" id="day-4" style="--day-accent:#f68bb7"><summary class="day-button" aria-label="Ver las materias del Viernes"><div><div class="day-title">Viernes</div><div class="day-desc">07:30 a 11:45</div><div class="day-preview" aria-hidden="true"><span class="preview-text">Tecnología · Matemática · Físico Química · Geografía</span></div></div><div class="day-meta"><span class="day-pill">5 clases</span><span class="chevron" aria-hidden="true">›</span></div></summary><div class="detail"><div class="lesson" style="--materia:#9ccdab"><div class="hours">07:30<br>08:15</div><div class="bar"></div><div class="info"><strong>Tecnología</strong><small>1.ª clase</small></div></div><div class="lesson" style="--materia:#649eea"><div class="hours">08:15<br>09:00</div><div class="bar"></div><div class="info"><strong>Matemática</strong><small>2.ª clase</small></div></div><div class="recreo">Recreo · 09:00 a 09:15</div><div class="lesson" style="--materia:#22d4d9"><div class="hours">09:15<br>10:00</div><div class="bar"></div><div class="info"><strong>Físico Química</strong><small>3.ª clase</small></div></div><div class="lesson" style="--materia:#d76be8"><div class="hours">10:00<br>10:45</div><div class="bar"></div><div class="info"><strong>Geografía</strong><small>4.ª clase</small></div></div><div class="recreo">Recreo · 10:45 a 11:00</div><div class="lesson" style="--materia:#44b8ae"><div class="hours">11:00<br>11:45</div><div class="bar"></div><div class="info"><strong>Prácticas del Lenguaje</strong><small>5.ª clase</small></div></div></div></details>
+</section>
 </div>
 <div id="selectorOverlay" class="selector-overlay" hidden>
  <div class="selector-panel" role="dialog" aria-modal="true" aria-labelledby="selectorTitle">
@@ -577,10 +590,17 @@ html.ng-day-expanded{height:auto;overflow-y:auto}
 </div>
 <div id="helpOverlay" class="overlay" hidden>
  <section class="panel help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" tabindex="-1">
-  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.6 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
+  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.7 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
   <div class="help-scroll" id="helpScroll" tabindex="0">
-  <p class="help-lead">Esta es una demostración comercial con institución ficticia y horarios ilustrativos. Permite explorar la consulta semanal, las materias, los recreos y la selección de año y división.</p>
-  <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3A</strong> por defecto) despliega la lista para elegir entre <strong>1 a 6 año</strong> y división <strong>A o B</strong>.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de tema alterna entre <strong>Dark Blue → Claro → Dark</strong>.</li></ol><p>Las materias, los días y los horarios publicados siguen siendo fijos y no se modifican desde esta aplicación.</p></section>
+  <p class="help-lead">Esta es una demostración comercial de una institución ficticia. <strong>Todos los horarios y las materias son ejemplos inventados</strong>, diferentes para cada curso, y no corresponden a un colegio real. Podés consultar días, recreos, cursos y divisiones.</p>
+  <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3.º A</strong> por defecto) permite elegir entre <strong>1.º y 6.º año</strong> y división <strong>A o B</strong>. Cada combinación muestra un horario ficticio distinto.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de tema alterna entre <strong>Dark Blue → Claro → Dark</strong>.</li></ol><p>Los horarios de ejemplo son de solo lectura; las versiones contratadas tendrán los horarios oficiales que proporcione cada institución.</p></section>
+  <section class="help-section commercial-info" aria-labelledby="commercialHeading">
+    <h3 id="commercialHeading">🏫 Horario Escolar para tu institución</h3>
+    <p>Esta aplicación demuestra cómo podría verse una versión exclusiva de tu colegio: <strong>nombre, identidad visual, cursos, divisiones, horarios de materias y recreos propios</strong>.</p>
+    <ul class="commercial-points"><li>Aplicación web instalable en Android y iPhone, con acceso para la comunidad educativa.</li><li>Carga inicial y actualización centralizada de horarios y materias.</li><li>Servicio de mantenimiento acordado con la institución; ampliaciones de funciones se presupuestan por separado.</li><li>Licencia institucional de uso; el código fuente sigue siendo propiedad de su desarrollador.</li></ul>
+    <p><strong>¿Querés evaluar una versión para tu colegio?</strong> Podés solicitar una propuesta personalizada al desarrollador. Los datos de contacto directo se facilitarán durante la presentación comercial.</p>
+    <a class="commercial-contact" href="https://github.com/marcepilar" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil público del desarrollador en GitHub">Ver perfil del desarrollador</a>
+  </section>
   <section class="help-install" aria-labelledby="installHeading">
     <div class="install-heading">
       <span class="install-step-badge">1</span>
@@ -621,6 +641,12 @@ html.ng-day-expanded{height:auto;overflow-y:auto}
   </section>
   <section class="help-section"><h3>🔄 Actualización y conexión</h3><p>Para recibir una versión nueva, conectate a Internet y cerrá y volvé a abrir la aplicación. Las actualizaciones pueden requerir una segunda apertura. Si el ícono o el nombre no cambia, quizá tengas que reinstalarla.</p><p>Los horarios quedan disponibles sin conexión después de cargar correctamente la PWA.</p></section>
   <p class="help-tip">Seguridad: esta aplicación no necesita usuario ni contraseña. Nunca compartas contraseñas ni códigos de acceso para usarla.</p>
+  <section class="help-section creator-info" aria-label="Autoría y condiciones de la demostración">
+    <h3>🛡️ Autoría y demostración</h3>
+    <p><strong>Desarrollado por Marcelo R.</strong> · Software de demostración comercial.</p>
+    <p><strong>North Green Academy</strong> es una institución ficticia creada para mostrar la aplicación. Los cursos, materias y horarios son ilustrativos; no representan información oficial de ningún establecimiento.</p>
+    <p>© 2026 Marcelo R. · Desarrollo independiente. Todos los derechos reservados.</p>
+  </section>
   </div>
  </section>
 </div>
@@ -634,7 +660,7 @@ const app=document.querySelector('.app');
 const cards=[...document.querySelectorAll('.week > .day')];
 const themes=['theme-blue','theme-light','theme-dark'];
 
-const APP_VERSION='V1.0.6';
+const APP_VERSION='V1.0.7';
 const themeIcons={
   'theme-blue': '<span class="theme-icon" aria-hidden="true"><img src="./theme-blue-orb.png" alt=""></span>',
   'theme-light': '<span class="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.8" fill="#ffd45d"/><g stroke="#ffd45d" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.7v2.6"/><path d="M12 18.7v2.6"/><path d="M2.7 12h2.6"/><path d="M18.7 12h2.6"/><path d="m5.4 5.4 1.8 1.8"/><path d="m16.8 16.8 1.8 1.8"/><path d="m16.8 7.2 1.8-1.8"/><path d="m5.4 18.6 1.8-1.8"/></g></svg></span>',
@@ -642,7 +668,58 @@ const themeIcons={
 };
 
 const themeNames={'theme-blue':'Dark Blue','theme-light':'Claro','theme-dark':'Dark'};
-const S=[['Lunes',[['12:50','Educación Física'],['13:50','Construcción de la Ciudadanía'],['15:05','Inglés'],['16:20','Historia'],['17:20','Historia']]],['Martes',[['11:30','Matemática'],['12:50','Físico Química'],['13:50','Biología'],['15:05','Matemática'],['16:20','Inglés'],['17:20','Inglés']]],['Miércoles',[['12:50','Geografía'],['13:50','Matemática'],['15:05','Educación Física'],['16:20','Físico Química'],['17:20','Prácticas del Lenguaje']]],['Jueves',[['12:50','Educación Artística'],['13:50','Educación Artística'],['15:05','Geografía'],['16:20','Prácticas del Lenguaje'],['17:20','Robótica']]],['Viernes',[['12:50','Prácticas del Lenguaje'],['13:50','Prácticas del Lenguaje'],['15:05','Biología'],['16:20','Construcción de la Ciudadanía'],['17:20','Matemática']]]];
+// Horarios ficticios, sin datos reales de ningún colegio. Distintos por curso y división.
+const DEMO_SUBJECTS=[["Lengua y Literatura", "Matemática", "Ciencias Naturales", "Historia", "Geografía", "Inglés", "Educación Física", "Artes Visuales", "Tecnología", "Ciudadanía"], ["Matemática", "Lengua y Literatura", "Biología", "Historia", "Geografía", "Inglés", "Educación Física", "Tecnología", "Música", "Ciudadanía"], ["Matemática", "Biología", "Físico Química", "Historia", "Geografía", "Inglés", "Prácticas del Lenguaje", "Educación Física", "Tecnología", "Ciudadanía"], ["Matemática", "Física", "Química", "Literatura", "Historia", "Inglés", "Biología", "Geografía", "Educación Física", "Informática"], ["Física", "Química", "Literatura", "Filosofía", "Economía", "Inglés", "Historia", "Matemática", "Biología", "Informática"], ["Matemática Aplicada", "Economía", "Proyecto de Investigación", "Derecho", "Filosofía", "Tecnología", "Comunicación", "Inglés", "Educación Física", "Biología"]];
+const DEMO_DAYS=['Lunes','Martes','Miércoles','Jueves','Viernes'];
+const DEMO_COLORS=["#649eea", "#efa642", "#22d4d9", "#33d65a", "#d76be8", "#f7e058", "#44b8ae", "#ef5454", "#9ccdab", "#e18d7e"];
+let S=[];
+function formatMinutes(total){return String(Math.floor(total/60)).padStart(2,'0')+':'+String(total%60).padStart(2,'0');}
+function createDemoSchedule(year,section,day){
+  const n=6; // fixed index of days is 0..4, year is 1..6
+  const subjects=DEMO_SUBJECTS[year-1], offset=section==='B'?1:0;
+  const lessonCount=(year+day+offset)%3===0?6:5;
+  let minutes=(section==='A'?450:750)+(year%3)*15;
+  const start=formatMinutes(minutes),classes=[],breaks=[];
+  for(let i=0;i<lessonCount;i++){
+    const index=(year*2+day*3+i*2+offset*3)%subjects.length;
+    const to=minutes+45;
+    classes.push({start:formatMinutes(minutes),end:formatMinutes(to),subject:subjects[index],color:DEMO_COLORS[index%DEMO_COLORS.length]});
+    minutes=to;
+    if(i===1||i===3){breaks.push({after:i,start:formatMinutes(minutes),end:formatMinutes(minutes+15)});minutes+=15;}
+  }
+  return {dayName:DEMO_DAYS[day],start,end:formatMinutes(minutes),classes,breaks};
+}
+function newDiv(className,text){
+  const el=document.createElement('div');el.className=className;
+  if(text!==undefined)el.textContent=text;
+  return el;
+}
+function renderDemoSchedule(){
+  const year=Number(selectedYear),section=selectedSection;
+  const sharing=[];
+  cards.forEach((card,day)=>{
+    const sch=createDemoSchedule(year,section,day);
+    card.querySelector('.day-desc').textContent=sch.start+' a '+sch.end;
+    card.querySelector('.day-pill').textContent=sch.classes.length+' clases';
+    card.querySelector('.preview-text').textContent=sch.classes.slice(0,4).map(c=>c.subject).join(' · ');
+    const detail=card.querySelector('.detail');
+    const fragment=document.createDocumentFragment();
+    sch.classes.forEach((c,i)=>{
+      const lesson=newDiv('lesson');lesson.style.setProperty('--materia',c.color);
+      const hours=newDiv('hours');hours.append(document.createTextNode(c.start),document.createElement('br'),document.createTextNode(c.end));
+      lesson.append(hours,newDiv('bar'));
+      const info=newDiv('info');const strong=document.createElement('strong');strong.textContent=c.subject;
+      const small=document.createElement('small');small.textContent=(i+1)+'.ª clase';
+      info.append(strong,small);lesson.append(info);fragment.append(lesson);
+      const pause=sch.breaks.find(b=>b.after===i);
+      if(pause)fragment.append(newDiv('recreo','Recreo · '+pause.start+' a '+pause.end));
+    });
+    detail.replaceChildren(fragment);
+    sharing.push([sch.dayName,sch.classes.map(c=>[c.start,c.subject])]);
+  });
+  S=sharing;
+}
+
 let theme='theme-blue';
 let selectedYear='3';
 let selectedSection='A';
@@ -656,6 +733,7 @@ function courseLabelLong(){return `${selectedYear}° año ${selectedSection}`;}
 function courseLabelShort(){return `${selectedYear}${selectedSection}`;}
 function courseLabelDisplay(){return `${selectedYear}.º ${selectedSection}`;}
 function applyCourse(){
+  renderDemoSchedule();
   $('courseBtn').querySelector('.course-label').textContent=courseLabelDisplay();
   $('titleSub').textContent=`${selectedYear}.º año ${selectedSection} · Ciclo lectivo ${new Date().getFullYear()}`;
   document.title='Horario Escolar DEMO · '+courseLabelLong();
@@ -726,7 +804,7 @@ function publishedUrl(){
     u.search='';u.hash='';return u.href;
   }catch(_){return '';}
 }
-function scheduleText(){return '📚 Horario Escolar DEMO · '+courseLabelLong()+'\n'+S.map(d=>d[0]+': '+d[1].map(c=>c[0]+' '+c[1]).join(' / ')).join('\n')+'\nRecreos: 14:50 a 15:05 y 16:05 a 16:20.';}
+function scheduleText(){return '📚 Horario Escolar DEMO · '+courseLabelLong()+' (datos inventados)\n'+S.map(d=>d[0]+': '+d[1].map(c=>c[0]+' '+c[1]).join(' / ')).join('\n')+'\nHorarios ilustrativos. Esta no es una institución real.';}
 function shareText(){const url=publishedUrl();return url?'📚 Horario Escolar DEMO · '+courseLabelLong()+':\n'+url:scheduleText();}
 const fallbackQR='./qr-horario.png';
 function configureShare(){
