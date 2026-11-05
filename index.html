@@ -372,16 +372,17 @@ body { background:var(--bg) !important; }
  overflow:hidden;
 }
 .school-brand-card{
- width:100%;padding:1px 12px;
+ width:100%;padding:0;
  display:flex;align-items:center;justify-content:center;
  border:1px solid #c6d6ea;border-radius:15px;
  box-shadow:0 4px 14px rgba(0,0,0,.17);
  background:#fff;overflow:hidden;
 }
+.school-brand-card img{background:#fff;}
 .school-brand .school-brand-logo{
  display:block !important; width:100% !important;
- max-width:100% !important; height:clamp(41px,8.7dvh,74px) !important;
- max-height:none !important;object-fit:contain !important;
+ max-width:100% !important; height:clamp(52px,10.2dvh,86px) !important;
+ max-height:none !important;object-fit:cover !important;object-position:center !important;
  filter:none !important;
 }
 .header{width:100%;min-width:0;}
@@ -409,11 +410,11 @@ body { background:var(--bg) !important; }
 @media(max-width:480px){
  .app{gap:clamp(3px,.55dvh,6px);}
  .header{gap:4px 8px;}
- .school-brand-card{padding:1px 8px;}
+ .school-brand-card{padding:0;}
  .theme-btn .theme-icon{width:28px !important;height:28px !important;flex-basis:28px !important;}
 }
 @media(max-height:620px){
- .school-brand .school-brand-logo{height:clamp(37px,7.8dvh,50px) !important;}
+ .school-brand .school-brand-logo{height:clamp(48px,9.3dvh,66px) !important;}
  .cycle-strip{padding:4px 8px;font-size:10px;}
  .hint{font-size:9px;}
  .app{gap:3px;}
@@ -679,7 +680,7 @@ function syncView(v,fromHistory=false){
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     if(token!==transitionToken || view.pane) return;
     if(fromHistory){window.scrollTo({top:view.scrollY,behavior:'instant'});}
-    else if(openDay===3 || openDay===4){
+    else if(openDay>=1){
       const rect=cards[openDay].getBoundingClientRect();
       const vh=window.visualViewport?.height||window.innerHeight;
       const maxScroll=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
