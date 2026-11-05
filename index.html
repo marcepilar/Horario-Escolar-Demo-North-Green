@@ -303,7 +303,7 @@ body.theme-light{--today-glow:rgba(17,108,179,.13)}
 }
 
 
-/* V1.0.1 – Logo del colegio, icono planeta y aviso de actualización */
+/* V1.0.3 – Logo del colegio, icono planeta y aviso de actualización */
 .school-brand{
  display:flex;align-items:center;justify-content:center;gap:10px;
  min-height:38px;padding:6px 12px;border-radius:14px;
@@ -351,7 +351,7 @@ body.theme-light{--today-glow:rgba(17,108,179,.13)}
 }
 
 
-/* V1.0.1: logo arriba, ciclo abajo y desborde lateral corregido. */
+/* V1.0.3: logo arriba, ciclo abajo y desborde lateral corregido. */
 html, body { width:100%; max-width:100%; overflow-x:clip !important; }
 body { background:var(--bg) !important; }
 .app {
@@ -425,6 +425,33 @@ body { background:var(--bg) !important; }
  .theme-btn .theme-icon{width:25px !important;height:25px !important;flex-basis:25px !important;}
 }
 
+
+/* V1.0.3 - Cabecera institucional a sangre completa, sin franjas blancas laterales.
+   La imagen conserva su relación de aspecto 3:1 para no cortar el escudo ni el lema. */
+.school-brand,
+.school-brand-card { width:100%;max-width:100%;min-width:0; }
+.school-brand-card{
+    display:block!important;
+    padding:0!important;
+    line-height:0;
+    overflow:hidden;
+    border:1px solid #d6be73;
+    border-radius:15px;
+    background:#063a2c!important;
+}
+.school-brand .school-brand-logo{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    max-width:none!important;
+    aspect-ratio:3/1;
+    object-fit:contain!important;
+    object-position:center center;
+}
+@media(max-width:480px){.school-brand-card{padding:0!important;}}
+@media(max-height:620px){.school-brand .school-brand-logo{height:auto!important;}}
+
 </style>
 </head>
 <body class="theme-blue">
@@ -477,7 +504,7 @@ body { background:var(--bg) !important; }
 </div>
 <div id="helpOverlay" class="overlay" hidden>
  <section class="panel help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" tabindex="-1">
-  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.1 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
+  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.3 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
   <div class="help-scroll" id="helpScroll" tabindex="0">
   <p class="help-lead">Esta es una demostración comercial con institución ficticia y horarios ilustrativos. Permite explorar la consulta semanal, las materias, los recreos y la selección de año y división.</p>
   <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3A</strong> por defecto) despliega la lista para elegir entre <strong>1 a 6 año</strong> y división <strong>A o B</strong>.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de tema alterna entre <strong>Dark Blue → Claro → Dark</strong>.</li></ol><p>Las materias, los días y los horarios publicados siguen siendo fijos y no se modifican desde esta aplicación.</p></section>
@@ -534,7 +561,7 @@ const app=document.querySelector('.app');
 const cards=[...document.querySelectorAll('.week > .day')];
 const themes=['theme-blue','theme-light','theme-dark'];
 
-const APP_VERSION='V1.0.1';
+const APP_VERSION='V1.0.3';
 const themeIcons={
   'theme-blue': '<span class="theme-icon" aria-hidden="true"><img src="./theme-blue-orb.png" alt=""></span>',
   'theme-light': '<span class="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.8" fill="#ffd45d"/><g stroke="#ffd45d" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.7v2.6"/><path d="M12 18.7v2.6"/><path d="M2.7 12h2.6"/><path d="M18.7 12h2.6"/><path d="m5.4 5.4 1.8 1.8"/><path d="m16.8 16.8 1.8 1.8"/><path d="m16.8 7.2 1.8-1.8"/><path d="m5.4 18.6 1.8-1.8"/></g></svg></span>',
@@ -662,6 +689,7 @@ function syncView(v,fromHistory=false){
   const expanded=openDay>=0;
   week.classList.toggle('expanded',expanded);
   app.classList.toggle('has-open',expanded);
+  app.style.paddingBottom=''; // descartar el margen de centrado del día anterior
   document.body.classList.toggle('is-expanded',expanded);
   $('selectorOverlay').hidden=view.pane!=='course';
   $('shareOverlay').hidden=view.pane!=='share';
@@ -679,15 +707,25 @@ function syncView(v,fromHistory=false){
   const token=++transitionToken;
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     if(token!==transitionToken || view.pane) return;
-    if(fromHistory){window.scrollTo({top:view.scrollY,behavior:'instant'});}
-    else if(openDay>=1){
+    if(openDay>=0){
       const rect=cards[openDay].getBoundingClientRect();
       const vh=window.visualViewport?.height||window.innerHeight;
-      const maxScroll=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
-      const target=Math.min(maxScroll,Math.max(0,window.scrollY+rect.top+(rect.height-vh)/2));
+      // Centrar la tarjeta completa cuando entra en pantalla; si es más alta,
+      // ubicar su encabezado cerca del borde superior para empezar a leerla.
+      const safeTop=Math.max(18,Math.min(80,vh*0.09));
+      const visibleTop = rect.height > vh-safeTop*2 ? safeTop : Math.max(safeTop,(vh-rect.height)/2);
+      const desired = fromHistory && view.scrollY>0 ? view.scrollY : Math.max(0,window.scrollY+rect.top-visibleTop);
+      // Sin este pequeño margen flexible, martes/miércoles quedaban limitados
+      // por el final de la página y no podían llegar al centro.
+      let maxScroll=Math.max(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)-window.innerHeight);
+      if(desired>maxScroll){
+        const basePadding=parseFloat(getComputedStyle(app).paddingBottom)||0;
+        app.style.paddingBottom=(basePadding+Math.ceil(desired-maxScroll)+8)+'px';
+        maxScroll=Math.max(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)-window.innerHeight);
+      }
       const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({top:target,behavior:reduced?'instant':'smooth'});
-    }else if(openDay===-1){window.scrollTo({top:0,behavior:'instant'});}
+      window.scrollTo({top:Math.min(maxScroll,desired),behavior:fromHistory||reduced?'instant':'smooth'});
+    }else{window.scrollTo({top:fromHistory?view.scrollY:0,behavior:'instant'});}
   }));
 }
 function navigate(next){
