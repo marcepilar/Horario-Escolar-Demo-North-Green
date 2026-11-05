@@ -453,7 +453,7 @@ body { background:var(--bg) !important; }
 @media(max-height:620px){.school-brand .school-brand-logo{height:auto!important;}}
 
 
-/* V1.0.5 — Mejor contraste en tema claro, sin alterar los demás temas. */
+/* V1.0.6 — Mejor contraste en tema claro, sin alterar los demás temas. */
 body.theme-light .install-platform,
 body.theme-light .install-guide,
 body.theme-light .help-section{
@@ -492,10 +492,39 @@ body.theme-light .close{border-color:#acbed2;background:#e9f0f9;color:#14243b;}
 }
 
 
-/* V1.0.5: el ordinal completo debe entrar también en pantallas anchas. */
+/* V1.0.6: el ordinal completo debe entrar también en pantallas anchas. */
 @media (min-width:481px){
   .actions>.course-btn{min-width:92px!important;padding:0 9px!important;}
 }
+
+/* V1.0.6 — Inicio estable tras actualizar / regresar a la PWA.
+   Solo la vista expandida puede desplazarse verticalmente. */
+:root{--home-viewport-height:100dvh}
+html:not(.ng-day-expanded){
+  height:var(--home-viewport-height);
+  overflow-y:hidden !important;
+  overscroll-behavior-y:none;
+}
+body:not(.is-expanded){
+  height:var(--home-viewport-height) !important;
+  min-height:0 !important;
+  max-height:var(--home-viewport-height) !important;
+  overflow-y:hidden !important;
+  overscroll-behavior-y:none;
+}
+.app:not(.has-open){
+  height:var(--home-viewport-height) !important;
+  min-height:0 !important;
+  max-height:var(--home-viewport-height) !important;
+  overflow:hidden !important;
+  grid-template-rows:auto auto auto auto minmax(0,1fr) !important;
+}
+.week:not(.expanded){
+  min-height:0 !important;
+  overflow:hidden !important;
+}
+.week:not(.expanded)>.day{min-height:0}
+html.ng-day-expanded{height:auto;overflow-y:auto}
 </style>
 </head>
 <body class="theme-blue">
@@ -548,7 +577,7 @@ body.theme-light .close{border-color:#acbed2;background:#e9f0f9;color:#14243b;}
 </div>
 <div id="helpOverlay" class="overlay" hidden>
  <section class="panel help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" tabindex="-1">
-  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.5 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
+  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.6 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
   <div class="help-scroll" id="helpScroll" tabindex="0">
   <p class="help-lead">Esta es una demostración comercial con institución ficticia y horarios ilustrativos. Permite explorar la consulta semanal, las materias, los recreos y la selección de año y división.</p>
   <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3A</strong> por defecto) despliega la lista para elegir entre <strong>1 a 6 año</strong> y división <strong>A o B</strong>.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de tema alterna entre <strong>Dark Blue → Claro → Dark</strong>.</li></ol><p>Las materias, los días y los horarios publicados siguen siendo fijos y no se modifican desde esta aplicación.</p></section>
@@ -605,7 +634,7 @@ const app=document.querySelector('.app');
 const cards=[...document.querySelectorAll('.week > .day')];
 const themes=['theme-blue','theme-light','theme-dark'];
 
-const APP_VERSION='V1.0.5';
+const APP_VERSION='V1.0.6';
 const themeIcons={
   'theme-blue': '<span class="theme-icon" aria-hidden="true"><img src="./theme-blue-orb.png" alt=""></span>',
   'theme-light': '<span class="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.8" fill="#ffd45d"/><g stroke="#ffd45d" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.7v2.6"/><path d="M12 18.7v2.6"/><path d="M2.7 12h2.6"/><path d="M18.7 12h2.6"/><path d="m5.4 5.4 1.8 1.8"/><path d="m16.8 16.8 1.8 1.8"/><path d="m16.8 7.2 1.8-1.8"/><path d="m5.4 18.6 1.8-1.8"/></g></svg></span>',
@@ -714,6 +743,33 @@ const NAV_KEY='horarioEscolarNorthGreenDemoV101';
 const BASE_VIEW={day:-1,pane:null,scrollY:0};
 let view={...BASE_VIEW};
 let transitionToken=0;
+let viewportRaf=0;
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+function refreshViewport(){
+  // Medida explícita: evita un 100dvh transitorio retenido tras cambio del SW.
+  const vv=window.visualViewport;
+  const h=Math.round((vv?.height>0 ? vv.height : 0) || window.innerHeight || document.documentElement.clientHeight);
+  if(h>0) document.documentElement.style.setProperty('--home-viewport-height',h+'px');
+}
+function restoreHomeLayout(){
+  refreshViewport();
+  if(view.day>=0) return;
+  document.documentElement.classList.remove('ng-day-expanded');
+  document.body.classList.remove('is-expanded');
+  app.classList.remove('has-open');
+  week.classList.remove('expanded');
+  app.style.paddingBottom='';
+  window.scrollTo({left:0,top:0,behavior:'instant'});
+}
+function queueViewportSync(){
+  if(viewportRaf) cancelAnimationFrame(viewportRaf);
+  viewportRaf=requestAnimationFrame(()=>{
+    viewportRaf=0;
+    refreshViewport();
+    if(view.day<0) restoreHomeLayout();
+  });
+}
+refreshViewport();
 function cleanView(v){
   const day=Number.isInteger(v?.day)&&v.day>=0&&v.day<5?v.day:-1;
   const pane=['course','share','help'].includes(v?.pane)?v.pane:null;
@@ -732,6 +788,8 @@ function syncView(v,fromHistory=false){
   const openDay=view.day;
   cards.forEach((card,i)=>{card.open=i===openDay;});
   const expanded=openDay>=0;
+  document.documentElement.classList.toggle('ng-day-expanded',expanded);
+  refreshViewport();
   week.classList.toggle('expanded',expanded);
   app.classList.toggle('has-open',expanded);
   app.style.paddingBottom=''; // descartar el margen de centrado del día anterior
@@ -770,7 +828,7 @@ function syncView(v,fromHistory=false){
       }
       const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({top:Math.min(maxScroll,desired),behavior:fromHistory||reduced?'instant':'smooth'});
-    }else{window.scrollTo({top:fromHistory?view.scrollY:0,behavior:'instant'});}
+    }else{restoreHomeLayout();}
   }));
 }
 function navigate(next){
@@ -795,8 +853,23 @@ const initial=getStoredView()||BASE_VIEW;
 writeCurrent(initial,true);
 applyTheme();applyCourse();syncView(initial,true);
 // Año lectivo dinámico: el rótulo se refresca al volver a la app, sin cambiar horarios.
-document.addEventListener('visibilitychange',()=>{if(!document.hidden){applyCourse();checkForUpdates();}});
-window.addEventListener('pageshow',()=>{applyCourse();checkForUpdates();});
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden){
+    applyCourse();
+    queueViewportSync();
+    checkForUpdates();
+  }
+});
+window.addEventListener('pageshow',()=>{
+  applyCourse();
+  // El navegador puede restaurar el scroll y las medidas de la versión anterior.
+  queueViewportSync();
+  requestAnimationFrame(()=>requestAnimationFrame(queueViewportSync));
+  checkForUpdates();
+});
+window.addEventListener('resize',queueViewportSync,{passive:true});
+window.visualViewport?.addEventListener('resize',queueViewportSync,{passive:true});
+window.addEventListener('orientationchange',queueViewportSync,{passive:true});
 // The native details toggle is prevented so all transitions go through browser history.
 cards.forEach((card,i)=>{
   card.querySelector('summary').addEventListener('click',evt=>{
