@@ -1,9 +1,9 @@
-HORARIO ESCOLAR · DEMOSTRACIÓN COMERCIAL NORTH GREEN ACADEMY V1.0.7 (PRUEBA)
+HORARIO ESCOLAR · DEMOSTRACIÓN COMERCIAL NORTH GREEN ACADEMY V1.0.8 (PRUEBA)
 
 Aplicación demostrativa con interfaz y funciones equivalentes a la PWA de Chesterton,
 pero con banner e iconos de North Green Academy, institución ficticia.
 Las materias y horarios se presentan ÚNICAMENTE como ejemplo, no como datos de un colegio real.
-El selector permite explorar 1º a 6º, A/B, pero muestra los mismos horarios ilustrativos.
+El selector permite explorar 1.º a 6.º, A/B, con horarios ficticios diferentes para cada división.
 
 INSTALAR EN GITHUB PAGES
 1. Entrar al repositorio existente Horario-Escolar-Demo-North-Green.
@@ -19,7 +19,7 @@ IMPORTANTE
 - El código enviado al navegador es visible técnicamente; GitHub Pages no lo oculta.
 - El uso público del nombre ficticio debe comprobarse antes si se adopta como marca real.
 
-Autoría del software: Marcelo R. · Proyecto comercial Horario Escolar.
+Autoría del software: Marcelo Rodriguez · Proyecto comercial Horario Escolar.
 
 V1.0.3 (estable anterior): banner de ancho completo y centrado de los días desplegados.
 
@@ -31,4 +31,6 @@ V1.0.6 (estable anterior): corregido desplazamiento intermitente de pantalla de 
 ESTADO OFICIAL: V1.0.6 estable, aprobada por el usuario.
 
 
-V1.0.7 DE PRUEBA: horarios inventados diferentes para las doce combinaciones de cursos, información comercial dentro de Ayuda, autoría Marcelo R. y aclaración de colegio ficticio. No hay teléfonos o correos personales configurados; contacto de referencia: perfil público GitHub. Última estable confirmada: V1.0.6.
+V1.0.7 DE PRUEBA: horarios inventados diferentes para las doce combinaciones de cursos, información comercial dentro de Ayuda, autoría Marcelo R. y aclaración de colegio ficticio. No hay teléfonos o correos personales configurados; sin botón de perfil público. Última estable confirmada: V1.0.6.
+
+V1.0.8 DE PRUEBA: eliminado enlace del perfil público de GitHub en Ayuda y autoría actualizada a Marcelo Rodriguez. Última estable confirmada: V1.0.6.
