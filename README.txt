@@ -1,4 +1,4 @@
-HORARIO ESCOLAR · DEMOSTRACIÓN COMERCIAL NORTH GREEN ACADEMY V1.0.4 (PRUEBA)
+HORARIO ESCOLAR · DEMOSTRACIÓN COMERCIAL NORTH GREEN ACADEMY V1.0.5 (PRUEBA)
 
 Aplicación demostrativa con interfaz y funciones equivalentes a la PWA de Chesterton,
 pero con banner e iconos de North Green Academy, institución ficticia.
@@ -23,4 +23,5 @@ Autoría del software: Marcelo R. · Proyecto comercial Horario Escolar.
 
 V1.0.3 (estable anterior): banner de ancho completo y centrado de los días desplegados.
 
-V1.0.4 (prueba): mejora de contraste en modo claro y encuadre de iconos de Android/iPhone en Ayuda.
+V1.0.4 (prueba anterior): mejora de contraste en modo claro y encuadre de iconos de Android/iPhone en Ayuda.
+V1.0.5 (prueba): el selector muestra los cursos como 3.º A, 2.º B, etc., sin alterar sus funciones.

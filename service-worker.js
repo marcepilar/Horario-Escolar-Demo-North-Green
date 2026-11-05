@@ -1,6 +1,6 @@
-/* Horario Escolar PWA v1.0.4-demo-NG — actualizaciones y uso sin conexión */
+/* Horario Escolar PWA v1.0.5-demo-NG — actualizaciones y uso sin conexión */
 const PREFIX = 'horario-escolar-demo-north-green-v';
-const CACHE = PREFIX + '1.0.4';
+const CACHE = PREFIX + '1.0.5';
 const CORE = ['./','./index.html','./manifest.webmanifest','./version.json',
  './icon-192.png','./icon-512.png','./apple-touch-icon.png','./qr-horario.png','./ayuda-android.png','./ayuda-iphone.png','./theme-blue-orb.png','./north-green-banner.png'];
 self.addEventListener('install', event => {

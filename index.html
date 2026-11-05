@@ -453,7 +453,7 @@ body { background:var(--bg) !important; }
 @media(max-height:620px){.school-brand .school-brand-logo{height:auto!important;}}
 
 
-/* V1.0.4 — Mejor contraste en tema claro, sin alterar los demás temas. */
+/* V1.0.5 — Mejor contraste en tema claro, sin alterar los demás temas. */
 body.theme-light .install-platform,
 body.theme-light .install-guide,
 body.theme-light .help-section{
@@ -491,6 +491,11 @@ body.theme-light .close{border-color:#acbed2;background:#e9f0f9;color:#14243b;}
  .install-logo-frame{width:54px;height:54px;flex-basis:54px;border-radius:11px;}
 }
 
+
+/* V1.0.5: el ordinal completo debe entrar también en pantallas anchas. */
+@media (min-width:481px){
+  .actions>.course-btn{min-width:92px!important;padding:0 9px!important;}
+}
 </style>
 </head>
 <body class="theme-blue">
@@ -500,7 +505,7 @@ body.theme-light .close{border-color:#acbed2;background:#e9f0f9;color:#14243b;}
   <div class="mark" aria-hidden="true"><img src="./icon-192.png" width="40" height="40" alt="" decoding="async"></div>
   <div class="header-text"><h1 id="titleMain">Horario Escolar</h1></div>
   <div class="actions">
-   <button id="courseBtn" class="square course-btn" type="button" aria-label="Elegir año y división" title="Elegir año y división" aria-expanded="false" aria-controls="selectorOverlay"><span class="course-label">3A</span><svg class="course-caret" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7 5 6 5-6"/></svg></button>
+   <button id="courseBtn" class="square course-btn" type="button" aria-label="Elegir año y división" title="Elegir año y división" aria-expanded="false" aria-controls="selectorOverlay"><span class="course-label">3.º A</span><svg class="course-caret" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7 5 6 5-6"/></svg></button>
    <button id="shareBtn" class="square more-btn" type="button" aria-label="Compartir por WhatsApp o código QR" title="Compartir"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.45 10.58 15.1 6.57 M8.45 13.42 15.1 17.43"/><circle cx="6" cy="12" r="2.65"/><circle cx="18" cy="5" r="2.65"/><circle cx="18" cy="19" r="2.65"/></svg></button>
    <button id="helpBtn" class="square help-btn" type="button" aria-label="Ayuda e instalación" title="Ayuda"><span class="help-glyph" aria-hidden="true">?</span></button>
    <button id="themeBtn" class="square theme-btn" type="button" aria-label="Cambiar tema" title="Cambiar tema"><span class="theme-icon" aria-hidden="true"></span></button>
@@ -543,7 +548,7 @@ body.theme-light .close{border-color:#acbed2;background:#e9f0f9;color:#14243b;}
 </div>
 <div id="helpOverlay" class="overlay" hidden>
  <section class="panel help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" tabindex="-1">
-  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.4 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
+  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.5 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
   <div class="help-scroll" id="helpScroll" tabindex="0">
   <p class="help-lead">Esta es una demostración comercial con institución ficticia y horarios ilustrativos. Permite explorar la consulta semanal, las materias, los recreos y la selección de año y división.</p>
   <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3A</strong> por defecto) despliega la lista para elegir entre <strong>1 a 6 año</strong> y división <strong>A o B</strong>.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de tema alterna entre <strong>Dark Blue → Claro → Dark</strong>.</li></ol><p>Las materias, los días y los horarios publicados siguen siendo fijos y no se modifican desde esta aplicación.</p></section>
@@ -600,7 +605,7 @@ const app=document.querySelector('.app');
 const cards=[...document.querySelectorAll('.week > .day')];
 const themes=['theme-blue','theme-light','theme-dark'];
 
-const APP_VERSION='V1.0.4';
+const APP_VERSION='V1.0.5';
 const themeIcons={
   'theme-blue': '<span class="theme-icon" aria-hidden="true"><img src="./theme-blue-orb.png" alt=""></span>',
   'theme-light': '<span class="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.8" fill="#ffd45d"/><g stroke="#ffd45d" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.7v2.6"/><path d="M12 18.7v2.6"/><path d="M2.7 12h2.6"/><path d="M18.7 12h2.6"/><path d="m5.4 5.4 1.8 1.8"/><path d="m16.8 16.8 1.8 1.8"/><path d="m16.8 7.2 1.8-1.8"/><path d="m5.4 18.6 1.8-1.8"/></g></svg></span>',
@@ -620,8 +625,9 @@ try {
 } catch(_) {}
 function courseLabelLong(){return `${selectedYear}° año ${selectedSection}`;}
 function courseLabelShort(){return `${selectedYear}${selectedSection}`;}
+function courseLabelDisplay(){return `${selectedYear}.º ${selectedSection}`;}
 function applyCourse(){
-  $('courseBtn').querySelector('.course-label').textContent=courseLabelShort();
+  $('courseBtn').querySelector('.course-label').textContent=courseLabelDisplay();
   $('titleSub').textContent=`${selectedYear}.º año ${selectedSection} · Ciclo lectivo ${new Date().getFullYear()}`;
   document.title='Horario Escolar DEMO · '+courseLabelLong();
   document.querySelector('meta[name="description"]').content='Demostración comercial de horario escolar para '+courseLabelLong()+'. Datos ilustrativos.';
