@@ -453,7 +453,7 @@ body { background:var(--bg) !important; }
 @media(max-height:620px){.school-brand .school-brand-logo{height:auto!important;}}
 
 
-/* V1.0.10 — Mejor contraste en tema claro, sin alterar los demás temas. */
+/* V1.0.11 — Mejor contraste en tema claro, sin alterar los demás temas. */
 body.theme-light .install-platform,
 body.theme-light .install-guide,
 body.theme-light .help-section{
@@ -492,12 +492,12 @@ body.theme-light .close{border-color:#acbed2;background:#e9f0f9;color:#14243b;}
 }
 
 
-/* V1.0.10: el ordinal completo debe entrar también en pantallas anchas. */
+/* V1.0.11: el ordinal completo debe entrar también en pantallas anchas. */
 @media (min-width:481px){
   .actions>.course-btn{min-width:92px!important;padding:0 9px!important;}
 }
 
-/* V1.0.10 — Inicio estable tras actualizar / regresar a la PWA.
+/* V1.0.11 — Inicio estable tras actualizar / regresar a la PWA.
    Solo la vista expandida puede desplazarse verticalmente. */
 :root{--home-viewport-height:100dvh}
 html:not(.ng-day-expanded){
@@ -526,7 +526,7 @@ body:not(.is-expanded){
 .week:not(.expanded)>.day{min-height:0}
 html.ng-day-expanded{height:auto;overflow-y:auto}
 
-/* V1.0.10: tarjetas informativas de la demostración, exclusivamente dentro de Ayuda. */
+/* V1.0.11: tarjetas informativas de la demostración, exclusivamente dentro de Ayuda. */
 .commercial-info{border-color:color-mix(in srgb,var(--accent),var(--border) 65%)}
 .commercial-info .commercial-points{padding-left:19px;margin:9px 0}
 .commercial-info .commercial-points li{font-size:12px;line-height:1.55;margin:0 0 7px;color:var(--text)}
@@ -534,7 +534,7 @@ html.ng-day-expanded{height:auto;overflow-y:auto}
 body.theme-light .commercial-info .commercial-points li{color:#20334f}
 
 
-/* V1.0.10 — HÍBRIDO PREMIUM: barra contenedora + botones individuales.
+/* V1.0.11 — HÍBRIDO PREMIUM: barra contenedora + botones individuales.
    Conserva exactamente la lógica original de curso, tema, compartir y ayuda. */
 .actions{
  --nav-shell-top:#153151;--nav-shell-bottom:#0c1f38;
@@ -590,7 +590,7 @@ body.theme-light .commercial-info .commercial-points li{color:#20334f}
  border-radius:15px!important;
  background:linear-gradient(165deg,var(--nav-selected-top),var(--nav-selected-bottom))!important;
  box-shadow:inset 0 1px 0 rgba(247,253,255,.29),0 0 0 1px rgba(67,171,255,.25),0 0 11px rgba(52,154,236,.15)!important;
- animation:none!important;transform:none!important;
+ transform-origin:center center;
 }
 .actions>.course-btn .course-label{
  white-space:nowrap;display:inline-block;
@@ -671,6 +671,32 @@ body.theme-light .actions::after{background:linear-gradient(90deg,transparent,#f
 @media(max-height:620px){.actions{padding:3px!important}.actions>.square{height:37px!important}}
 @media(prefers-reduced-motion:reduce){.actions>.course-btn .course-label{animation:none!important}.actions>.square{transition:none!important}}
 
+
+/* V1.0.11 — Zoom de respiración suave en el selector de curso.
+   Se anima solo el botón protagonista, no el marco común ni los otros controles. */
+@keyframes ngCourseButtonZoom{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.035)}
+}
+.actions>.course-btn:not([aria-expanded="true"]){
+  position:relative;z-index:2;
+  animation:ngCourseButtonZoom 2.7s ease-in-out infinite!important;
+  transform-origin:50% 50%;
+}
+/* Evitar doble animación: el texto acompaña el zoom del botón completo. */
+.actions>.course-btn .course-label{animation:none!important}
+.actions>.course-btn:active{
+  animation:none!important;
+  transform:scale(.985);
+}
+.actions>.course-btn[aria-expanded="true"]{
+  animation:none!important;
+  transform:scale(1);
+}
+@media(prefers-reduced-motion:reduce){
+  .actions>.course-btn:not([aria-expanded="true"]){animation:none!important;transform:none!important}
+}
+
 </style>
 </head>
 <body class="theme-blue">
@@ -725,7 +751,7 @@ body.theme-light .actions::after{background:linear-gradient(90deg,transparent,#f
 </div>
 <div id="helpOverlay" class="overlay" hidden>
  <section class="panel help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" tabindex="-1">
-  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.10 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
+  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.11 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
   <div class="help-scroll" id="helpScroll" tabindex="0">
   <p class="help-lead">Esta es una demostración comercial de una institución ficticia. <strong>Todos los horarios y las materias son ejemplos inventados</strong>, diferentes para cada curso, y no corresponden a un colegio real. Podés consultar días, recreos, cursos y divisiones.</p>
   <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3.º A</strong> por defecto) permite elegir entre <strong>1.º y 6.º año</strong> y división <strong>A o B</strong>. Cada combinación muestra un horario ficticio distinto.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de tema alterna entre <strong>Dark Blue → Claro → Dark</strong>.</li></ol><p>Los horarios de ejemplo son de solo lectura; las versiones contratadas tendrán los horarios oficiales que proporcione cada institución.</p></section>
@@ -794,7 +820,7 @@ const app=document.querySelector('.app');
 const cards=[...document.querySelectorAll('.week > .day')];
 const themes=['theme-blue','theme-light','theme-dark'];
 
-const APP_VERSION='V1.0.10';
+const APP_VERSION='V1.0.11';
 const themeIcons={
   'theme-blue': '<span class="theme-icon" aria-hidden="true"><img src="./theme-blue-orb.png" alt=""></span>',
   'theme-light': '<span class="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.8" fill="#ffd45d"/><g stroke="#ffd45d" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.7v2.6"/><path d="M12 18.7v2.6"/><path d="M2.7 12h2.6"/><path d="M18.7 12h2.6"/><path d="m5.4 5.4 1.8 1.8"/><path d="m16.8 16.8 1.8 1.8"/><path d="m16.8 7.2 1.8-1.8"/><path d="m5.4 18.6 1.8-1.8"/></g></svg></span>',

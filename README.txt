@@ -40,3 +40,5 @@ Estado confirmado: V1.0.8 ÚLTIMA VERSIÓN ESTABLE OFICIAL.
 V1.0.10 DE PRUEBA: modelo D Premium integrado con cuatro segmentos, mismos controles y funciones. Última estable confirmada: V1.0.8.
 
 V1.0.10 — PRUEBA: barra exterior + cuatro botones independientes redondeados. Última estable: V1.0.8.
+
+V1.0.11 DE PRUEBA: zoom respiración suave (3,5%) sobre el botón de curso. La versión V1.0.8 sigue como última ESTABLE confirmada.
