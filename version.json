@@ -1,14 +1,14 @@
 {
   "app": "Horario Escolar · Demo North Green Academy",
-  "version": "V1.0.11",
+  "version": "V1.0.12",
   "release_date": "2026-11-05",
   "status": "prueba",
   "branch": "demo-comercial",
   "based_on": "Chesterton PWA V1.4.13 (interfaz)",
   "changes": [
-    "Zoom suave del botón de selección de curso (3.º A, etc.), sin alterar el marco híbrido premium ni los otros botones.",
-    "La animación se detiene al abrir el selector o mantener pulsado; respeta la preferencia de movimiento reducido.",
-    "Se conservan todos los horarios ficticios, navegación, temas y funciones de la V1.0.10."
+    "Los cuatro botones superiores se reducen ligeramente (altura 43 a 40 px; iconos y tipografía proporcionados).",
+    "Se mantiene la barra contenedora híbrida, el zoom suave del selector y la separación de controles.",
+    "Sin cambios en horarios, Ayuda, navegación, temas ni demás funciones."
   ],
   "notice": "Demostración comercial. North Green Academy es un nombre ficticio para la muestra, sin vínculo con una institución real."
 }
