@@ -1,46 +1,24 @@
-HORARIO ESCOLAR · DEMOSTRACIÓN COMERCIAL NORTH GREEN ACADEMY V1.0.12 (PRUEBA)
+HORARIO ESCOLAR · DEMOSTRACIÓN COMERCIAL NORTH GREEN ACADEMY V1.0.13 (PRUEBA)
 
-Aplicación demostrativa con interfaz y funciones equivalentes a la PWA de Chesterton,
-pero con banner e iconos de North Green Academy, institución ficticia.
-Las materias y horarios se presentan ÚNICAMENTE como ejemplo, no como datos de un colegio real.
-El selector permite explorar 1.º a 6.º, A/B, con horarios ficticios diferentes para cada división.
+BASE ESTABLE OFICIAL: V1.0.12. Esta V1.0.13 está en evaluación.
 
-INSTALAR EN GITHUB PAGES
-1. Entrar al repositorio existente Horario-Escolar-Demo-North-Green.
-2. Descomprimir el ZIP y subir los 13 archivos a la RAÍZ, reemplazando los anteriores.
-3. Confirmar los cambios y comprobar que GitHub Pages complete la actualización.
-4. Abrir la URL HTTPS publicada para probar la nueva versión. No crear otro repositorio.
+NOVEDAD V1.0.13
+- Destaca en verde la materia actual y en amarillo los recreos, al abrir el día de hoy.
+- Indica cuántos minutos faltan y se actualiza cada 15 segundos, sin conexión a Internet.
+- Funciona en todas las divisiones ficticias de 1.º a 6.º, A y B.
+- No marca materias de otros días ni fuera del horario; usa la hora local del dispositivo.
+- La presentación, navegación, los temas, el banner y los horarios originales de la demo no se modifican.
 
-IMPORTANTE
-- No subir la demo en el repositorio de Chesterton: el contenido reemplazaría su aplicación.
-- El archivo qr-horario.png es ilustrativo cuando la página se abre localmente.
-  Al publicar en HTTPS, el botón Compartir genera un QR con la URL real (requiere conexión).
-- Las versiones de prueba se validan antes de considerarse estables.
-- El código enviado al navegador es visible técnicamente; GitHub Pages no lo oculta.
-- El uso público del nombre ficticio debe comprobarse antes si se adopta como marca real.
+ADVERTENCIA: NORTH GREEN ACADEMY ES UNA INSTITUCIÓN FICTICIA.
+Los horarios, materias y cursos son ejemplos, no información real u oficial.
 
-Autoría del software: Marcelo Rodriguez · Proyecto comercial Horario Escolar.
+PUBLICAR EN GITHUB PAGES
+1. Descomprimir el ZIP y reemplazar los 13 archivos en la raíz del repositorio
+   marcepilar/Horario-Escolar-Demo-North-Green (NO subir el ZIP sin extraer).
+2. Confirmar los cambios y comprobar la publicación en GitHub Pages.
+3. Abrir la app desde el enlace HTTPS. Si sigue mostrando la versión vieja,
+   cerrar/reabrir o actualizar según aviso interno de la PWA.
+4. No subir estos archivos al repositorio del Colegio Chesterton.
 
-V1.0.3 (estable anterior): banner de ancho completo y centrado de los días desplegados.
-
-V1.0.4 (prueba anterior): mejora de contraste en modo claro y encuadre de iconos de Android/iPhone en Ayuda.
-V1.0.5 (prueba): el selector muestra los cursos como 3.º A, 2.º B, etc., sin alterar sus funciones.
-
-V1.0.6 (estable anterior): corregido desplazamiento intermitente de pantalla de inicio tras actualizar o restaurar la aplicación.
-
-ESTADO OFICIAL: V1.0.6 estable, aprobada por el usuario.
-
-
-V1.0.7 DE PRUEBA: horarios inventados diferentes para las doce combinaciones de cursos, información comercial dentro de Ayuda, autoría Marcelo R. y aclaración de colegio ficticio. No hay teléfonos o correos personales configurados; sin botón de perfil público. Última estable confirmada: V1.0.6.
-
-V1.0.8 DE PRUEBA: eliminado enlace del perfil público de GitHub en Ayuda y autoría actualizada a Marcelo Rodriguez. Última estable confirmada: V1.0.6.
-
-Estado confirmado: V1.0.8 ÚLTIMA VERSIÓN ESTABLE OFICIAL.
-
-V1.0.10 DE PRUEBA: modelo D Premium integrado con cuatro segmentos, mismos controles y funciones. Última estable confirmada: V1.0.8.
-
-V1.0.10 — PRUEBA: barra exterior + cuatro botones independientes redondeados. Última estable: V1.0.8.
-
-V1.0.11 DE PRUEBA: zoom respiración suave (3,5%) sobre el botón de curso. La versión V1.0.8 sigue como última ESTABLE confirmada.
-
-V1.0.12 DE PRUEBA: cuatro controles superiores ligeramente más pequeños, barra híbrida y zoom conservados. Última estable confirmada: V1.0.8.
+Autoría del software: Marcelo Rodriguez.
+La demo es independiente de la PWA Chesterton y usa caché y almacenamiento propios.

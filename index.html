@@ -453,7 +453,7 @@ body { background:var(--bg) !important; }
 @media(max-height:620px){.school-brand .school-brand-logo{height:auto!important;}}
 
 
-/* V1.0.12 — Mejor contraste en tema claro, sin alterar los demás temas. */
+/* V1.0.13 — Mejor contraste en tema claro, sin alterar los demás temas. */
 body.theme-light .install-platform,
 body.theme-light .install-guide,
 body.theme-light .help-section{
@@ -492,12 +492,12 @@ body.theme-light .close{border-color:#acbed2;background:#e9f0f9;color:#14243b;}
 }
 
 
-/* V1.0.12: el ordinal completo debe entrar también en pantallas anchas. */
+/* V1.0.13: el ordinal completo debe entrar también en pantallas anchas. */
 @media (min-width:481px){
   .actions>.course-btn{min-width:92px!important;padding:0 9px!important;}
 }
 
-/* V1.0.12 — Inicio estable tras actualizar / regresar a la PWA.
+/* V1.0.13 — Inicio estable tras actualizar / regresar a la PWA.
    Solo la vista expandida puede desplazarse verticalmente. */
 :root{--home-viewport-height:100dvh}
 html:not(.ng-day-expanded){
@@ -526,7 +526,7 @@ body:not(.is-expanded){
 .week:not(.expanded)>.day{min-height:0}
 html.ng-day-expanded{height:auto;overflow-y:auto}
 
-/* V1.0.12: tarjetas informativas de la demostración, exclusivamente dentro de Ayuda. */
+/* V1.0.13: tarjetas informativas de la demostración, exclusivamente dentro de Ayuda. */
 .commercial-info{border-color:color-mix(in srgb,var(--accent),var(--border) 65%)}
 .commercial-info .commercial-points{padding-left:19px;margin:9px 0}
 .commercial-info .commercial-points li{font-size:12px;line-height:1.55;margin:0 0 7px;color:var(--text)}
@@ -534,7 +534,7 @@ html.ng-day-expanded{height:auto;overflow-y:auto}
 body.theme-light .commercial-info .commercial-points li{color:#20334f}
 
 
-/* V1.0.12 — HÍBRIDO PREMIUM: barra contenedora + botones individuales.
+/* V1.0.13 — HÍBRIDO PREMIUM: barra contenedora + botones individuales.
    Conserva exactamente la lógica original de curso, tema, compartir y ayuda. */
 .actions{
  --nav-shell-top:#153151;--nav-shell-bottom:#0c1f38;
@@ -672,7 +672,7 @@ body.theme-light .actions::after{background:linear-gradient(90deg,transparent,#f
 @media(prefers-reduced-motion:reduce){.actions>.course-btn .course-label{animation:none!important}.actions>.square{transition:none!important}}
 
 
-/* V1.0.12 — Zoom de respiración suave en el selector de curso.
+/* V1.0.13 — Zoom de respiración suave en el selector de curso.
    Se anima solo el botón protagonista, no el marco común ni los otros controles. */
 @keyframes ngCourseButtonZoom{
   0%,100%{transform:scale(1)}
@@ -697,6 +697,54 @@ body.theme-light .actions::after{background:linear-gradient(90deg,transparent,#f
   .actions>.course-btn:not([aria-expanded="true"]){animation:none!important;transform:none!important}
 }
 
+/* V1.0.13 — Resaltado en tiempo real de materias y recreos ficticios del curso seleccionado.
+   Verde para clase, amarillo para recreo; sin alterar horarios ni colores originales. */
+   No modifica los bloques horarios del colegio, solo su estado visual. */
+.day .detail .lesson.live-now{
+  position:relative;
+  background:linear-gradient(110deg,
+    color-mix(in srgb,var(--surface-alt) 76%,#32d5a4 24%),
+    color-mix(in srgb,var(--surface-alt) 90%,#32d5a4 10%));
+  /* V1.4.16: halo exterior reducido ~15 % para un aspecto más discreto. */
+  outline:2px solid color-mix(in srgb,#43d5ad 85%,var(--surface-alt));
+  outline-offset:-2px;
+  box-shadow:0 0 0 1px color-mix(in srgb,#25d5a4 28%,transparent),0 0 12px color-mix(in srgb,#25d5a4 21%,transparent);
+}
+.day .detail .lesson.live-now .hours{color:color-mix(in srgb,var(--accent) 65%,#35e7aa 35%)}
+.day .detail .recreo.live-now{
+  border:2px solid #f1c75f;
+  border-radius:11px;
+  padding:8px 6px;
+  background:color-mix(in srgb,var(--surface-alt) 74%,#efb943 26%);
+  box-shadow:0 0 14px color-mix(in srgb,#efb943 24%,transparent);
+  color:var(--text);
+}
+.day .detail .live-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  border-radius:7px;padding:3px 7px;margin-top:5px;
+  font:800 10px/1.35 system-ui,-apple-system,'Segoe UI',sans-serif;
+  letter-spacing:.01em;
+  color:#07291e;background:#69e7be;
+  white-space:normal;
+}
+.day .detail .recreo .live-badge{margin:5px 0 0 6px;color:#342800;background:#ffdd79}
+.day .detail .live-badge::before{content:'';width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:currentColor}
+/* Etiqueta en una línea propia debajo de la hora de clase: nunca al lado de «3.ª hora». */
+.day .detail .lesson .info{min-width:0;}
+.day .detail .lesson .info>.live-badge{
+  display:flex;align-items:center;justify-content:flex-start;
+  width:fit-content;max-width:100%;
+  margin:7px 0 0;padding:4px 8px;
+  line-height:1.35;white-space:normal;
+  box-sizing:border-box;
+}
+/* Recreos: etiqueta alineada debajo del rótulo, sin solaparse. */
+.day .detail .recreo .live-badge{display:flex;width:fit-content;max-width:100%;margin:7px auto 0;}
+body.theme-light .day .detail .lesson.live-now{background:#e5faf2;outline-color:#168760;box-shadow:0 0 0 1px #16876044}
+body.theme-light .day .detail .recreo.live-now{background:#fff4d2;border-color:#a8750c;box-shadow:0 0 0 1px #a8750c33}
+body.theme-light .day .detail .live-badge{background:#146c50;color:#fff}
+body.theme-light .day .detail .recreo .live-badge{background:#8a5f07;color:#fff}
+@media(prefers-reduced-motion:reduce){.day .detail .lesson.live-now,.day .detail .recreo.live-now{transition:none;animation:none}}
 </style>
 </head>
 <body class="theme-blue">
@@ -751,7 +799,7 @@ body.theme-light .actions::after{background:linear-gradient(90deg,transparent,#f
 </div>
 <div id="helpOverlay" class="overlay" hidden>
  <section class="panel help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" tabindex="-1">
-  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.12 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
+  <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión V1.0.13 · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
   <div class="help-scroll" id="helpScroll" tabindex="0">
   <p class="help-lead">Esta es una demostración comercial de una institución ficticia. <strong>Todos los horarios y las materias son ejemplos inventados</strong>, diferentes para cada curso, y no corresponden a un colegio real. Podés consultar días, recreos, cursos y divisiones.</p>
   <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3.º A</strong> por defecto) permite elegir entre <strong>1.º y 6.º año</strong> y división <strong>A o B</strong>. Cada combinación muestra un horario ficticio distinto.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de tema alterna entre <strong>Dark Blue → Claro → Dark</strong>.</li></ol><p>Los horarios de ejemplo son de solo lectura; las versiones contratadas tendrán los horarios oficiales que proporcione cada institución.</p></section>
@@ -801,6 +849,11 @@ body.theme-light .actions::after{background:linear-gradient(90deg,transparent,#f
   </section>
   <section class="help-section"><h3>🔄 Actualización y conexión</h3><p>Para recibir una versión nueva, conectate a Internet y cerrá y volvé a abrir la aplicación. Las actualizaciones pueden requerir una segunda apertura. Si el ícono o el nombre no cambia, quizá tengas que reinstalarla.</p><p>Los horarios quedan disponibles sin conexión después de cargar correctamente la PWA.</p></section>
   <p class="help-tip">Seguridad: esta aplicación no necesita usuario ni contraseña. Nunca compartas contraseñas ni códigos de acceso para usarla.</p>
+  <section class="help-section" aria-label="Materias y recreos en tiempo real">
+    <h3>⏱️ Clases y recreos en tiempo real</h3>
+    <p>Al desplegar <strong>el día de hoy</strong>, la materia que transcurre se destaca en <strong>verde</strong> y el recreo en <strong>amarillo</strong>, mostrando los minutos restantes. Se actualiza con la hora local del teléfono, sin usar Internet.</p>
+    <p><strong>Importante:</strong> en esta demostración todos los horarios y cursos son ficticios, por lo que las actividades destacadas son únicamente ejemplos.</p>
+  </section>
   <section class="help-section creator-info" aria-label="Autoría y condiciones de la demostración">
     <h3>🛡️ Autoría y demostración</h3>
     <p><strong>Desarrollado por Marcelo Rodriguez</strong> · Software de demostración comercial.</p>
@@ -820,7 +873,7 @@ const app=document.querySelector('.app');
 const cards=[...document.querySelectorAll('.week > .day')];
 const themes=['theme-blue','theme-light','theme-dark'];
 
-const APP_VERSION='V1.0.12';
+const APP_VERSION='V1.0.13';
 const themeIcons={
   'theme-blue': '<span class="theme-icon" aria-hidden="true"><img src="./theme-blue-orb.png" alt=""></span>',
   'theme-light': '<span class="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.8" fill="#ffd45d"/><g stroke="#ffd45d" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.7v2.6"/><path d="M12 18.7v2.6"/><path d="M2.7 12h2.6"/><path d="M18.7 12h2.6"/><path d="m5.4 5.4 1.8 1.8"/><path d="m16.8 16.8 1.8 1.8"/><path d="m16.8 7.2 1.8-1.8"/><path d="m5.4 18.6 1.8-1.8"/></g></svg></span>',
@@ -878,6 +931,56 @@ function renderDemoSchedule(){
     sharing.push([sch.dayName,sch.classes.map(c=>[c.start,c.subject])]);
   });
   S=sharing;
+}
+
+// V1.0.13 — Resaltado en tiempo real: hora y día LOCAL del dispositivo, horario ficticio del curso seleccionado.
+
+// No se guardan datos ni se cambia el horario oficial. Solo se marca la franja actual.
+const LIVE_TICK_MS=15000;
+function minutesFromClock(value){
+  const m=/^(\d{1,2}):(\d{2})$/.exec((value||'').trim());
+  if(!m)return null;
+  const h=Number(m[1]),min=Number(m[2]);
+  return h>=0&&h<=23&&min>=0&&min<=59 ? 60*h+min : null;
+}
+function liveInterval(el){
+  if(el.classList.contains('lesson')){
+    // Los horarios originales están en dos líneas, comienzo y fin.
+    const clocks=[...(el.querySelector('.hours')?.textContent||'').matchAll(/(\d{1,2}:\d{2})/g)].map(x=>x[1]);
+    return clocks.length===2 ? clocks.map(minutesFromClock) : null;
+  }
+  if(el.classList.contains('recreo')){
+    const clocks=[...el.textContent.matchAll(/(\d{1,2}:\d{2})/g)].map(x=>x[1]);
+    return clocks.length===2 ? clocks.map(minutesFromClock) : null;
+  }
+  return null;
+}
+function updateLiveSchedule(now=new Date()){
+  // Todo apagado por defecto (incluida la insignia vieja), incluso al cambiar de curso.
+  cards.forEach(card=>card.querySelectorAll('.detail .lesson.live-now,.detail .recreo.live-now').forEach(el=>{
+    el.classList.remove('live-now');
+    el.removeAttribute('aria-current');
+  }));
+  cards.forEach(card=>card.querySelectorAll('.detail .live-badge').forEach(el=>el.remove()));
+  const today=now.getDay()-1;  // domingo=-1, lunes=0 ... viernes=4
+  if(today<0||today>4||view.day!==today)return;
+  const minute=now.getHours()*60+now.getMinutes()+now.getSeconds()/60;
+  const card=cards[today];
+  for(const el of card.querySelectorAll('.detail .lesson,.detail .recreo')){
+    const range=liveInterval(el);
+    if(!range || range[0]===null || range[1]===null || range[1]<=range[0])continue;
+    if(minute>=range[0]&&minute<range[1]){
+      el.classList.add('live-now');
+      el.setAttribute('aria-current','true');
+      const badge=document.createElement('span');
+      badge.className='live-badge';
+      const left=Math.max(1,Math.ceil(range[1]-minute));
+      badge.textContent=(el.classList.contains('recreo')?'RECREO AHORA':'EN CURSO')+' · '+left+' min restantes';
+      const target=el.classList.contains('lesson')?(el.querySelector('.info')||el):el;
+      target.appendChild(badge);
+      break;  // como máximo un bloque activo
+    }
+  }
 }
 
 let theme='theme-blue';
@@ -1032,6 +1135,7 @@ function syncView(v,fromHistory=false){
   app.classList.toggle('has-open',expanded);
   app.style.paddingBottom=''; // descartar el margen de centrado del día anterior
   document.body.classList.toggle('is-expanded',expanded);
+  updateLiveSchedule();
   $('selectorOverlay').hidden=view.pane!=='course';
   $('shareOverlay').hidden=view.pane!=='share';
   $('helpOverlay').hidden=view.pane!=='help';
@@ -1094,12 +1198,14 @@ applyTheme();applyCourse();syncView(initial,true);
 document.addEventListener('visibilitychange',()=>{
   if(!document.hidden){
     applyCourse();
+    updateLiveSchedule();
     queueViewportSync();
     checkForUpdates();
   }
 });
 window.addEventListener('pageshow',()=>{
   applyCourse();
+  updateLiveSchedule();
   // El navegador puede restaurar el scroll y las medidas de la versión anterior.
   queueViewportSync();
   requestAnimationFrame(()=>requestAnimationFrame(queueViewportSync));
@@ -1108,6 +1214,8 @@ window.addEventListener('pageshow',()=>{
 window.addEventListener('resize',queueViewportSync,{passive:true});
 window.visualViewport?.addEventListener('resize',queueViewportSync,{passive:true});
 window.addEventListener('orientationchange',queueViewportSync,{passive:true});
+// Ajustar el indicador al cambio de clase/recreo sin recargar la página.
+setInterval(()=>{if(!document.hidden&&view.day>=0)updateLiveSchedule();},LIVE_TICK_MS);
 // The native details toggle is prevented so all transitions go through browser history.
 cards.forEach((card,i)=>{
   card.querySelector('summary').addEventListener('click',evt=>{
@@ -1127,10 +1235,10 @@ $('selectorOverlay').addEventListener('click',evt=>{if(evt.target===$('selectorO
 $('shareOverlay').addEventListener('click',evt=>{if(evt.target===$('shareOverlay'))goPrevious();});
 $('helpOverlay').addEventListener('click',evt=>{if(evt.target===$('helpOverlay'))goPrevious();});
 document.querySelectorAll('.section-chip').forEach(btn=>btn.addEventListener('click',()=>{
-  selectedYear=btn.dataset.year;selectedSection=btn.dataset.section;applyCourse();goPrevious();
+  selectedYear=btn.dataset.year;selectedSection=btn.dataset.section;applyCourse();updateLiveSchedule();goPrevious();
 }));
 document.querySelectorAll('.year-chip').forEach(btn=>btn.addEventListener('click',()=>{
-  selectedYear=btn.dataset.year;applyCourse();
+  selectedYear=btn.dataset.year;applyCourse();updateLiveSchedule();
 }));
 $('themeBtn').addEventListener('click',()=>{theme=themes[(themes.indexOf(theme)+1)%themes.length];applyTheme();});
 document.addEventListener('keydown',evt=>{if(evt.key==='Escape'&&(view.pane||view.day>=0)){evt.preventDefault();goPrevious();}});
