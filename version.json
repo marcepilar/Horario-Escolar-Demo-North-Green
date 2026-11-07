@@ -1,17 +1,16 @@
 {
   "app": "Horario Escolar · Demo North Green Academy",
-  "version": "V1.0.14",
+  "version": "V1.0.15",
   "release_date": "2026-11-07",
   "status": "prueba",
   "branch": "demo-comercial",
-  "based_on": "Chesterton PWA V1.4.13 (interfaz)",
+  "base_estable": "V1.0.12",
+  "based_on": "V1.0.13 + reversión de animaciones V1.0.14",
   "changes": [
-    "Al abrir/cerrar/cambiar una tarjeta de lunes a viernes, transición suave de tamaño y posición (410 ms) compatible con los navegadores modernos.",
-    "Las materias aparecen con un deslizamiento sutil y fundido (320 ms); se respeta la preferencia de reducir movimiento.",
-    "Se conservan la navegación con Atrás, el centrado del día abierto, los horarios, el QR, los temas y los controles.",
-    "El manifiesto y los iconos de instalación no se modifican para evitar cambiar la identidad de la PWA.",
-    "Conserva de la prueba V1.0.13 el seguimiento de clases/recreos en tiempo real; la versión estable continúa V1.0.12."
+    "Se eliminan las transiciones de apertura y cierre de las tarjetas introducidas en V1.0.14; vuelve el comportamiento inmediato de V1.0.13.",
+    "Se conservan la selección de curso, horarios ficticios, materias y recreos con seguimiento en tiempo real, los temas y demás funciones.",
+    "El número de versión de Ayuda se obtiene ahora de APP_VERSION para evitar textos desactualizados.",
+    "ZIP de actualización liviana: solo index.html, service-worker.js y version.json. Sin cambios de íconos ni manifiesto."
   ],
-  "notice": "Versión de PRUEBA. Última versión estable oficial: V1.0.12. No publicar como estable hasta aprobación.",
-  "base_estable": "V1.0.12"
+  "notice": "Versión de PRUEBA. Última estable oficial North Green V1.0.12."
 }
