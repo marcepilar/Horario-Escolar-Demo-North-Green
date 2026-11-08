@@ -1,16 +1,19 @@
 {
   "app": "Horario Escolar · Demo North Green Academy",
-  "version": "V1.0.15",
+  "version": "V1.0.19",
   "release_date": "2026-11-07",
   "status": "prueba",
   "branch": "demo-comercial",
   "base_estable": "V1.0.12",
-  "based_on": "V1.0.13 + reversión de animaciones V1.0.14",
+  "based_on": "V1.0.18 (candidata anterior)",
   "changes": [
-    "Se eliminan las transiciones de apertura y cierre de las tarjetas introducidas en V1.0.14; vuelve el comportamiento inmediato de V1.0.13.",
-    "Se conservan la selección de curso, horarios ficticios, materias y recreos con seguimiento en tiempo real, los temas y demás funciones.",
-    "El número de versión de Ayuda se obtiene ahora de APP_VERSION para evitar textos desactualizados.",
-    "ZIP de actualización liviana: solo index.html, service-worker.js y version.json. Sin cambios de íconos ni manifiesto."
+    "Selector de tema: el botón sigue anunciando el PRÓXIMO tema, sin etiqueta visible.",
+    "Modo Claro → Dark: luna creciente negro grafito, más fina y con inclinación leve.",
+    "Modo Dark → Dark Blue: luna menguante azul, más fina y con inclinación leve inversa.",
+    "Modo Dark Blue → Claro: sol dorado original, sin alteraciones.",
+    "Corrección del brillo exterior de cada icono según el siguiente tema.",
+    "Sin cambios en horarios, tarjetas, banners, iconos instalados, datos locales ni manifiesto.",
+    "ZIP de actualización liviano de tres archivos."
   ],
-  "notice": "Versión de PRUEBA. Última estable oficial North Green V1.0.12."
+  "notice": "V1.0.19 DE PRUEBA; última estable V1.0.12."
 }

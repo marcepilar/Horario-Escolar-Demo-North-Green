@@ -745,6 +745,96 @@ body.theme-light .day .detail .recreo.live-now{background:#fff4d2;border-color:#
 body.theme-light .day .detail .live-badge{background:#146c50;color:#fff}
 body.theme-light .day .detail .recreo .live-badge{background:#8a5f07;color:#fff}
 @media(prefers-reduced-motion:reduce){.day .detail .lesson.live-now,.day .detail .recreo.live-now{transition:none;animation:none}}
+
+
+/* Auditoría UX — texto legible, adelanto completo y selector de tema inequívoco.
+   Sin alteraciones de alto/filas de las cinco tarjetas ni de sus animaciones. */
+.day-preview .preview-text{
+  color:color-mix(in srgb,var(--text) 79%,var(--muted) 21%) !important;
+  font-size:clamp(10.7px,2.85vw,12.3px) !important;
+  font-weight:560;
+  flex:1 1 auto;
+  width:100%;max-width:100%;
+  text-overflow:ellipsis; /* protección excepcional para nombres muy largos */
+  letter-spacing:0;
+}
+.day-desc{color:color-mix(in srgb,var(--text) 73%,var(--muted) 27%) !important;}
+.hint{color:color-mix(in srgb,var(--text) 70%,var(--muted) 30%) !important;}
+/* La etiqueta TEMA es visible en móvil; se conserva el color e ícono de cada tema. */
+.actions>.theme-btn{
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:1px !important;
+  padding-block:1px !important;
+}
+.actions>.theme-btn .theme-icon{
+  flex:0 0 24px !important;
+  width:24px !important;
+  height:24px !important;
+  max-width:24px !important;
+  max-height:24px !important;
+}
+.actions>.theme-btn .theme-caption{
+  display:block !important;
+  flex:0 0 auto;
+  pointer-events:none;
+  font:800 8.5px/1 system-ui,-apple-system,'Segoe UI',sans-serif;
+  letter-spacing:.015em;
+  color:var(--nav-key,var(--text));
+  opacity:.88;
+}
+@media(max-width:350px), (max-height:620px){
+  .actions>.theme-btn .theme-icon{
+    width:21px !important;height:21px !important;
+    max-width:21px !important;max-height:21px !important;
+    flex-basis:21px !important;
+  }
+  .actions>.theme-btn .theme-caption{font-size:8px;}
+}
+
+/* Selector minimalista: ícono lunar/solar inequívoco, sin leyenda visual.
+   Creciente grafito fina = Dark; menguante azul fina = Dark Blue; sol = Claro.
+   Se mantiene el nombre accesible y el área táctil original. */
+.actions>.theme-btn{
+  display:flex!important;flex-direction:row!important;
+  align-items:center!important;justify-content:center!important;
+  gap:0!important;padding:0!important;
+}
+.actions>.theme-btn .theme-icon{
+  display:block!important;flex:0 0 29px!important;
+  width:29px!important;height:29px!important;
+  max-width:29px!important;max-height:29px!important;
+  pointer-events:none;
+}
+.actions>.theme-btn .theme-icon svg{
+  display:block!important;width:100%!important;height:100%!important;
+  overflow:visible;
+}
+.actions>.theme-btn .theme-caption{display:none!important}
+body.theme-blue .actions>.theme-btn .theme-icon svg{
+  filter:drop-shadow(0 0 3px rgba(250,192,67,.36));
+}
+body.theme-dark .actions>.theme-btn .theme-icon svg{
+  filter:drop-shadow(0 0 3px rgba(105,186,255,.42));
+}
+body.theme-light .actions>.theme-btn .theme-icon svg{
+  filter:drop-shadow(0 1px 2px rgba(26,37,51,.20));
+}
+@media(max-width:350px){
+  .actions>.theme-btn .theme-icon{
+    width:26px!important;height:26px!important;max-width:26px!important;
+    max-height:26px!important;flex-basis:26px!important;
+  }
+}
+
+/* Tarjetas de altura natural (misma corrección validada en Chesterton):
+   jamás crear márgenes de centrado al abrir jueves/viernes. */
+.week.expanded{justify-content:flex-start;align-items:stretch}
+.week.expanded .day[open]{flex:0 0 auto}
+.week.expanded .day[open] .detail{padding-bottom:7px}
+.week.expanded .day[open] .lesson:last-child{margin-bottom:0}
+
 </style>
 </head>
 <body class="theme-blue">
@@ -802,7 +892,7 @@ body.theme-light .day .detail .recreo .live-badge{background:#8a5f07;color:#fff}
   <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión <span id="helpAppVersion"></span> · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
   <div class="help-scroll" id="helpScroll" tabindex="0">
   <p class="help-lead">Esta es una demostración comercial de una institución ficticia. <strong>Todos los horarios y las materias son ejemplos inventados</strong>, diferentes para cada curso, y no corresponden a un colegio real. Podés consultar días, recreos, cursos y divisiones.</p>
-  <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3.º A</strong> por defecto) permite elegir entre <strong>1.º y 6.º año</strong> y división <strong>A o B</strong>. Cada combinación muestra un horario ficticio distinto.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de tema alterna entre <strong>Dark Blue → Claro → Dark</strong>.</li></ol><p>Los horarios de ejemplo son de solo lectura; las versiones contratadas tendrán los horarios oficiales que proporcione cada institución.</p></section>
+  <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3.º A</strong> por defecto) permite elegir entre <strong>1.º y 6.º año</strong> y división <strong>A o B</strong>. Cada combinación muestra un horario ficticio distinto.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de <strong>luna o sol</strong> alterna entre <strong>Dark Blue (menguante azul) → Claro (sol) → Dark (creciente grafito)</strong>.</li></ol><p>Los horarios de ejemplo son de solo lectura; las versiones contratadas tendrán los horarios oficiales que proporcione cada institución.</p></section>
   <section class="help-section commercial-info" aria-labelledby="commercialHeading">
     <h3 id="commercialHeading">🏫 Horario Escolar para tu institución</h3>
     <p>Esta aplicación demuestra cómo podría verse una versión exclusiva de tu colegio: <strong>nombre, identidad visual, cursos, divisiones, horarios de materias y recreos propios</strong>.</p>
@@ -873,15 +963,57 @@ const app=document.querySelector('.app');
 const cards=[...document.querySelectorAll('.week > .day')];
 const themes=['theme-blue','theme-light','theme-dark'];
 
-const APP_VERSION='V1.0.15';
+const APP_VERSION='V1.0.19';
 $('helpAppVersion').textContent=APP_VERSION;
 const themeIcons={
-  'theme-blue': '<span class="theme-icon" aria-hidden="true"><img src="./theme-blue-orb.png" alt=""></span>',
-  'theme-light': '<span class="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.8" fill="#ffd45d"/><g stroke="#ffd45d" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.7v2.6"/><path d="M12 18.7v2.6"/><path d="M2.7 12h2.6"/><path d="M18.7 12h2.6"/><path d="m5.4 5.4 1.8 1.8"/><path d="m16.8 16.8 1.8 1.8"/><path d="m16.8 7.2 1.8-1.8"/><path d="m5.4 18.6 1.8-1.8"/></g></svg></span>',
-  'theme-dark': '<span class="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.4 3.5a7.7 7.7 0 1 0 5.1 13.6A8.6 8.6 0 1 1 15.4 3.5Z" fill="#ffd768"/></svg></span>'
+  'theme-blue': "<span class=\"theme-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" focusable=\"false\"><defs><linearGradient id=\"waningBlue\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#D0F1FF\"/><stop offset=\".45\" stop-color=\"#81C8FF\"/><stop offset=\"1\" stop-color=\"#3087EA\"/></linearGradient></defs><path transform=\"rotate(11 12 12)\" d=\"M12 2.3 A9.7 9.7 0 0 0 12 21.7 C5.05 17.25 5.05 6.75 12 2.3Z\" fill=\"url(#waningBlue)\" stroke=\"#A9DCFF\" stroke-width=\".36\" stroke-linejoin=\"round\"/></svg></span>",
+  'theme-light': "<span class=\"theme-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"4.8\" fill=\"#FFD45D\"/><g stroke=\"#FFC94A\" stroke-width=\"1.7\" stroke-linecap=\"round\"><path d=\"M12 2.7v2.6\"/><path d=\"M12 18.7v2.6\"/><path d=\"M2.7 12h2.6\"/><path d=\"M18.7 12h2.6\"/><path d=\"m5.4 5.4 1.8 1.8\"/><path d=\"m16.8 16.8 1.8 1.8\"/><path d=\"m16.8 7.2 1.8-1.8\"/><path d=\"m5.4 18.6 1.8-1.8\"/></g></svg></span>",
+  'theme-dark': "<span class=\"theme-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" focusable=\"false\"><defs><linearGradient id=\"waxingGraphite\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#414B5A\"/><stop offset=\".55\" stop-color=\"#27313D\"/><stop offset=\"1\" stop-color=\"#171E29\"/></linearGradient></defs><path transform=\"rotate(-11 12 12)\" d=\"M12 2.3 A9.7 9.7 0 0 1 12 21.7 C18.95 17.25 18.95 6.75 12 2.3Z\" fill=\"url(#waxingGraphite)\" stroke=\"#25303C\" stroke-width=\".35\" stroke-linejoin=\"round\"/></svg></span>"
 };
 
 const themeNames={'theme-blue':'Dark Blue','theme-light':'Claro','theme-dark':'Dark'};
+
+/* Preview inteligente: nunca corta a mitad una materia si puede resumir.
+   Usa la información ya cargada; +N más indica materias/clases restantes. */
+const previewMeasureCanvas=document.createElement('canvas');
+const previewMeasureCtx=previewMeasureCanvas.getContext('2d');
+function previewFitLabel(el){
+  if(!el.dataset.previewSubjects)return;
+  let subjects=[];
+  try{subjects=JSON.parse(el.dataset.previewSubjects);}catch(_){return;}
+  if(!subjects.length)return;
+  const total=Math.max(subjects.length,Number(el.dataset.previewTotal)||subjects.length);
+  const width=el.clientWidth;
+  if(width<32 || !previewMeasureCtx)return;
+  const css=getComputedStyle(el);
+  previewMeasureCtx.font=`${css.fontWeight} ${css.fontSize} ${css.fontFamily}`;
+  const fits=(v)=>previewMeasureCtx.measureText(v).width+Math.max(0,v.length-1)*.08 <=width-5;
+  const full=subjects.join(' · ');
+  if(total===subjects.length && fits(full)){el.textContent=full;return;}
+  for(let n=subjects.length;n>=1;n--){
+    const label=subjects.slice(0,n).join(' · ')+` · +${total-n} más`;
+    if(fits(label)){el.textContent=label;return;}
+  }
+  // Solo se recorta cuando la primera materia es más ancha que toda la tarjeta.
+  el.textContent=subjects[0];
+}
+function previewSet(el,subjects,total=subjects.length){
+  el.dataset.previewSubjects=JSON.stringify(subjects);
+  el.dataset.previewTotal=String(total);
+  el.title=subjects.join(' · ');
+  el.textContent=subjects.join(' · ');
+  previewFitLabel(el);
+}
+function previewRefresh(){
+  document.querySelectorAll('.preview-text[data-preview-subjects]').forEach(previewFitLabel);
+}
+let previewFrame=0;
+window.addEventListener('resize',()=>{
+  cancelAnimationFrame(previewFrame);
+  previewFrame=requestAnimationFrame(previewRefresh);
+});
+if(document.fonts && document.fonts.ready){document.fonts.ready.then(previewRefresh).catch(()=>{});}
+
 // Horarios ficticios, sin datos reales de ningún colegio. Distintos por curso y división.
 const DEMO_SUBJECTS=[["Lengua y Literatura", "Matemática", "Ciencias Naturales", "Historia", "Geografía", "Inglés", "Educación Física", "Artes Visuales", "Tecnología", "Ciudadanía"], ["Matemática", "Lengua y Literatura", "Biología", "Historia", "Geografía", "Inglés", "Educación Física", "Tecnología", "Música", "Ciudadanía"], ["Matemática", "Biología", "Físico Química", "Historia", "Geografía", "Inglés", "Prácticas del Lenguaje", "Educación Física", "Tecnología", "Ciudadanía"], ["Matemática", "Física", "Química", "Literatura", "Historia", "Inglés", "Biología", "Geografía", "Educación Física", "Informática"], ["Física", "Química", "Literatura", "Filosofía", "Economía", "Inglés", "Historia", "Matemática", "Biología", "Informática"], ["Matemática Aplicada", "Economía", "Proyecto de Investigación", "Derecho", "Filosofía", "Tecnología", "Comunicación", "Inglés", "Educación Física", "Biología"]];
 const DEMO_DAYS=['Lunes','Martes','Miércoles','Jueves','Viernes'];
@@ -915,7 +1047,7 @@ function renderDemoSchedule(){
     const sch=createDemoSchedule(year,section,day);
     card.querySelector('.day-desc').textContent=sch.start+' a '+sch.end;
     card.querySelector('.day-pill').textContent=sch.classes.length+' clases';
-    card.querySelector('.preview-text').textContent=sch.classes.slice(0,4).map(c=>c.subject).join(' · ');
+    previewSet(card.querySelector('.preview-text'),sch.classes.map(c=>c.subject),sch.classes.length);
     const detail=card.querySelector('.detail');
     const fragment=document.createDocumentFragment();
     sch.classes.forEach((c,i)=>{
@@ -1009,8 +1141,11 @@ function applyCourse(){
 function applyTheme(){
   document.body.classList.remove('theme-blue','theme-light','theme-dark');
   document.body.classList.add(theme);
-  $('themeBtn').innerHTML=themeIcons[theme];
-  $('themeBtn').setAttribute('aria-label','Tema '+themeNames[theme]+'. Cambiar tema');
+  // El icono anticipa la accion del proximo toque, sin alterar el tema activo.
+  const nextTheme=themes[(themes.indexOf(theme)+1)%themes.length];
+  $('themeBtn').innerHTML=themeIcons[nextTheme];
+  $('themeBtn').title='Cambiar a '+themeNames[nextTheme]+' · Actual: '+themeNames[theme];
+  $('themeBtn').setAttribute('aria-label','Cambiar a '+themeNames[nextTheme]+'. Tema actual: '+themeNames[theme]);
   document.querySelector('meta[name="theme-color"]').content=theme==='theme-light' ? '#f0f4fb' : theme==='theme-blue' ? '#071122' : '#0b101c';
   try{localStorage.setItem('north-green-demo-theme',theme);}catch(_){}
 }
@@ -1133,6 +1268,7 @@ function syncView(v,fromHistory=false){
   document.documentElement.classList.toggle('ng-day-expanded',expanded);
   refreshViewport();
   week.classList.toggle('expanded',expanded);
+  if(!expanded)requestAnimationFrame(previewRefresh);
   app.classList.toggle('has-open',expanded);
   app.style.paddingBottom=''; // descartar el margen de centrado del día anterior
   document.body.classList.toggle('is-expanded',expanded);
@@ -1156,21 +1292,14 @@ function syncView(v,fromHistory=false){
     if(openDay>=0){
       const rect=cards[openDay].getBoundingClientRect();
       const vh=window.visualViewport?.height||window.innerHeight;
-      // Centrar la tarjeta completa cuando entra en pantalla; si es más alta,
-      // ubicar su encabezado cerca del borde superior para empezar a leerla.
-      const safeTop=Math.max(18,Math.min(80,vh*0.09));
-      const visibleTop = rect.height > vh-safeTop*2 ? safeTop : Math.max(safeTop,(vh-rect.height)/2);
-      const desired = fromHistory && view.scrollY>0 ? view.scrollY : Math.max(0,window.scrollY+rect.top-visibleTop);
-      // Sin este pequeño margen flexible, martes/miércoles quedaban limitados
-      // por el final de la página y no podían llegar al centro.
-      let maxScroll=Math.max(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)-window.innerHeight);
-      if(desired>maxScroll){
-        const basePadding=parseFloat(getComputedStyle(app).paddingBottom)||0;
-        app.style.paddingBottom=(basePadding+Math.ceil(desired-maxScroll)+8)+'px';
-        maxScroll=Math.max(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)-window.innerHeight);
-      }
+      // Acordeón natural: la cabecera puede acercarse al borde superior,
+      // pero nunca se aumenta la página artificialmente para centrar tarjetas.
+      const safeTop=Math.max(16,Math.min(48,vh*0.055));
+      const naturalMaxScroll=Math.max(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)-window.innerHeight);
+      const naturalTarget=window.scrollY+rect.top-safeTop;
+      const desired=fromHistory && view.scrollY>0 ? view.scrollY : naturalTarget;
       const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({top:Math.min(maxScroll,desired),behavior:fromHistory||reduced?'instant':'smooth'});
+      window.scrollTo({left:0,top:Math.max(0,Math.min(naturalMaxScroll,desired)),behavior:fromHistory||reduced?'instant':'smooth'});
     }else{restoreHomeLayout();}
   }));
 }
