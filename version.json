@@ -1,17 +1,17 @@
 {
   "app": "Horario Escolar · Demo North Green Academy",
-  "version": "V1.0.20",
+  "version": "V1.0.21",
   "release_date": "2026-11-07",
   "status": "prueba",
   "branch": "demo-comercial",
   "base_estable": "V1.0.12",
-  "based_on": "V1.0.19",
+  "based_on": "V1.0.20",
   "changes": [
-    "Selector de tema: sol dorado con rayos un 32% mas finos y disco central un 11% mas pequeno.",
-    "Discreto degradado de luz en el centro para mantener definicion a tamano de boton.",
-    "Se conserva el ciclo de mostrar el PROXIMO tema: luna grafito (Dark), luna azul (Dark Blue) y sol dorado (Claro).",
-    "Sin modificaciones de lunas, horarios, clases, recreos, tarjetas, escudos, banners o manifiesto.",
-    "Actualizacion ligera de tres archivos para GitHub Pages."
+    "Lógica del botón de tema ajustada: ahora muestra el icono correspondiente al tema activo.",
+    "Dark Blue muestra la luna azul, Claro muestra el sol y Dark muestra la luna amarilla.",
+    "Se conserva el mismo ciclo de cambio de temas al tocar el botón.",
+    "Actualizada la ayuda para reflejar el nuevo comportamiento del botón.",
+    "Sin cambios en horarios, materias, recreos, tarjetas, escudos, banners ni funciones de la demo."
   ],
-  "notice": "V1.0.20 DE PRUEBA; ultima estable V1.0.12."
+  "notice": "V1.0.21 DE PRUEBA; ultima estable V1.0.12."
 }

@@ -892,7 +892,7 @@ body.theme-light .actions>.theme-btn .theme-icon svg{
   <div class="share-head"><div><h2 id="helpTitle">Ayuda · Horario Escolar</h2><div class="help-version">Versión <span id="helpAppVersion"></span> · PWA para Android y iPhone</div></div><button id="closeHelp" class="close" type="button" aria-label="Cerrar ayuda">×</button></div>
   <div class="help-scroll" id="helpScroll" tabindex="0">
   <p class="help-lead">Esta es una demostración comercial de una institución ficticia. <strong>Todos los horarios y las materias son ejemplos inventados</strong>, diferentes para cada curso, y no corresponden a un colegio real. Podés consultar días, recreos, cursos y divisiones.</p>
-  <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3.º A</strong> por defecto) permite elegir entre <strong>1.º y 6.º año</strong> y división <strong>A o B</strong>. Cada combinación muestra un horario ficticio distinto.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de <strong>luna o sol</strong> alterna entre <strong>Dark Blue (menguante azul) → Claro (sol) → Dark (creciente grafito)</strong>.</li></ol><p>Los horarios de ejemplo son de solo lectura; las versiones contratadas tendrán los horarios oficiales que proporcione cada institución.</p></section>
+  <section class="help-section"><h3>📚 Cómo usar la aplicación</h3><ol><li>Tocá cualquiera de las cinco tarjetas horizontales para abrir las materias y los horarios de ese día.</li><li>Deslizá hacia abajo si necesitás ver el resto de las clases y los recreos. Al elegir otro día, se cierra el anterior.</li><li>El botón del curso (<strong>3.º A</strong> por defecto) permite elegir entre <strong>1.º y 6.º año</strong> y división <strong>A o B</strong>. Cada combinación muestra un horario ficticio distinto.</li><li>El botón de compartir usa el ícono clásico de <strong>tres puntos unidos</strong> y permite compartir por WhatsApp o mostrar un QR.</li><li>El botón de <strong>tema</strong> muestra el ícono del <strong>tema actual</strong>: <strong>luna azul</strong> en Dark Blue, <strong>sol</strong> en Claro y <strong>luna amarilla</strong> en Dark; al tocarlo, cambia al siguiente tema.</li></ol><p>Los horarios de ejemplo son de solo lectura; las versiones contratadas tendrán los horarios oficiales que proporcione cada institución.</p></section>
   <section class="help-section commercial-info" aria-labelledby="commercialHeading">
     <h3 id="commercialHeading">🏫 Horario Escolar para tu institución</h3>
     <p>Esta aplicación demuestra cómo podría verse una versión exclusiva de tu colegio: <strong>nombre, identidad visual, cursos, divisiones, horarios de materias y recreos propios</strong>.</p>
@@ -963,7 +963,7 @@ const app=document.querySelector('.app');
 const cards=[...document.querySelectorAll('.week > .day')];
 const themes=['theme-blue','theme-light','theme-dark'];
 
-const APP_VERSION='V1.0.20';
+const APP_VERSION='V1.0.21';
 $('helpAppVersion').textContent=APP_VERSION;
 const themeIcons={
   'theme-blue': "<span class=\"theme-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" focusable=\"false\"><defs><linearGradient id=\"waningBlue\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#D0F1FF\"/><stop offset=\".45\" stop-color=\"#81C8FF\"/><stop offset=\"1\" stop-color=\"#3087EA\"/></linearGradient></defs><path transform=\"rotate(11 12 12)\" d=\"M12 2.3 A9.7 9.7 0 0 0 12 21.7 C5.05 17.25 5.05 6.75 12 2.3Z\" fill=\"url(#waningBlue)\" stroke=\"#A9DCFF\" stroke-width=\".36\" stroke-linejoin=\"round\"/></svg></span>",
@@ -1142,10 +1142,9 @@ function applyTheme(){
   document.body.classList.remove('theme-blue','theme-light','theme-dark');
   document.body.classList.add(theme);
   // El icono anticipa la accion del proximo toque, sin alterar el tema activo.
-  const nextTheme=themes[(themes.indexOf(theme)+1)%themes.length];
-  $('themeBtn').innerHTML=themeIcons[nextTheme];
-  $('themeBtn').title='Cambiar a '+themeNames[nextTheme]+' · Actual: '+themeNames[theme];
-  $('themeBtn').setAttribute('aria-label','Cambiar a '+themeNames[nextTheme]+'. Tema actual: '+themeNames[theme]);
+  $('themeBtn').innerHTML=themeIcons[theme];
+  $('themeBtn').title='Cambiar tema · Actual: '+themeNames[theme];
+  $('themeBtn').setAttribute('aria-label','Tema actual: '+themeNames[theme]+'. Tocar para cambiar tema.');
   document.querySelector('meta[name="theme-color"]').content=theme==='theme-light' ? '#f0f4fb' : theme==='theme-blue' ? '#071122' : '#0b101c';
   try{localStorage.setItem('north-green-demo-theme',theme);}catch(_){}
 }
