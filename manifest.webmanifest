@@ -4,7 +4,7 @@
   "description": "Demostración comercial de horario escolar semanal para instituciones educativas.",
   "lang": "es-AR",
   "dir": "ltr",
-  "start_url": "./index.html",
+  "start_url": "./index.html?launch=1.0.25",
   "scope": "./",
   "display": "standalone",
   "background_color": "#071122",
@@ -28,5 +28,6 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "id": "./"
 }
