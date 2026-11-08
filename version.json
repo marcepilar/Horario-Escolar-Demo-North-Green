@@ -1,16 +1,16 @@
 {
   "app": "Horario Escolar · Demo North Green Academy",
-  "version": "V1.0.23",
+  "version": "V1.0.24",
   "release_date": "2026-11-08",
   "status": "prueba",
   "branch": "demo-comercial",
   "base_estable": "V1.0.12",
-  "based_on": "V1.0.22",
+  "based_on": "V1.0.23",
   "changes": [
-    "Se evita que el botón Tema conserve un contorno de selección después de tocarlo en pantallas táctiles.",
-    "El foco accesible sigue visible cuando se usa teclado.",
-    "Se mantienen el halo blanco suave y la luna grafito del modo Dark, así como el sol y la luna azul de los otros temas.",
-    "Sin modificaciones de horarios, materias, tarjetas, compartir, escudo ni banner."
+    "Rediseñados los iconos de la app para mejorar lectura y presencia en la pantalla de inicio del celular.",
+    "North Green: escudo y letras NG más grandes, mayor contraste, borde dorado más marcado y composición simplificada para tamaño pequeño.",
+    "Se agregan iconos 192, 512, maskable y apple-touch renovados junto al manifest actualizado.",
+    "Se mantienen intactos horarios, materias, tarjetas, temas, QR, compartir, escudo del banner y demás funciones."
   ],
-  "notice": "V1.0.23 DE PRUEBA; no sustituye a las versiones estables."
+  "notice": "V1.0.24 DE PRUEBA; ultima estable V1.0.12."
 }

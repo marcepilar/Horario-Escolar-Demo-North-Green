@@ -1,8 +1,8 @@
-/* Horario Escolar PWA v1.0.23-demo-NG — actualizaciones y uso sin conexión */
+/* Horario Escolar PWA v1.0.24-demo-NG — actualizaciones y uso sin conexión */
 const PREFIX = 'horario-escolar-demo-north-green-v';
-const CACHE = PREFIX + '1.0.23';
+const CACHE = PREFIX + '1.0.24';
 const CORE = ['./','./index.html','./manifest.webmanifest','./version.json',
- './icon-192.png','./icon-512.png','./apple-touch-icon.png','./qr-horario.png','./ayuda-android.png','./ayuda-iphone.png','./theme-blue-orb.png','./north-green-banner.png'];
+ './icon-192.png','./icon-512.png','./apple-touch-icon.png','./icon-maskable-512.png','./qr-horario.png','./ayuda-android.png','./ayuda-iphone.png','./theme-blue-orb.png','./north-green-banner.png'];
 self.addEventListener('install', event => {
  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)));
 });
